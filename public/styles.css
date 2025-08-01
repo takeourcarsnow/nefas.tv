@@ -1,3 +1,48 @@
+/* --- [ BLOG STYLES ] --- */
+.blog-snippet {
+    margin-bottom: 30px;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 0 8px var(--glow-color);
+}
+.blog-snippet-header {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.blog-date {
+    font-size: 0.95em;
+    color: var(--secondary-color);
+    margin-right: 10px;
+    opacity: 0.8;
+}
+.blog-tags {
+    margin-top: 4px;
+}
+.blog-tag {
+    display: inline-block;
+    background: var(--secondary-color);
+    color: var(--bg-color);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 0.85em;
+    margin-right: 4px;
+    margin-bottom: 2px;
+    box-shadow: 0 0 4px var(--secondary-glow);
+}
+.blog-toggle {
+    color: var(--main-color);
+    font-size: 0.95em;
+    margin-top: 4px;
+    cursor: pointer;
+}
+.blog-full-content {
+    margin-top: 10px;
+    padding-left: 8px;
+}
 /* --- [ CONFIG & VARIABLES ] --- */
 :root {
     --main-color: #00ff9d;
@@ -177,11 +222,45 @@ nav a.active, nav a:hover {
     border: 1px solid var(--border-color);
     padding: 15px;
     transition: all 0.3s ease;
+    height: 100%; /* Ensure items can stretch */
 }
 .grid-item:hover {
     border-color: var(--main-color);
     transform: translateY(-5px);
 }
+
+/* Styles for posts on the Home tab grid */
+.home-post-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.home-post-item .home-post-type {
+    font-size: 0.9em;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.home-post-item .home-post-title {
+    font-size: 1.1em;
+    color: var(--main-color);
+    text-shadow: 0 0 3px var(--glow-color);
+    margin-bottom: 15px;
+    flex-grow: 1; /* Allows title to take up space, pushing date/link down */
+}
+
+.home-post-item .home-post-date {
+    font-size: 0.8em;
+    opacity: 0.7;
+    margin-bottom: 15px;
+}
+
+.home-post-item .home-post-link {
+    font-weight: bold;
+    align-self: flex-start;
+}
+
 
 /* Video Section */
 .video-embed iframe {
@@ -370,4 +449,4 @@ nav a.active, nav a:hover {
     8% { text-shadow: none; }
     9% { text-shadow: 0 0 5px var(--glow-color); }
     100% { text-shadow: 0 0 5px var(--glow-color); }
-} 
+}
