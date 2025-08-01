@@ -1,0 +1,373 @@
+/* --- [ CONFIG & VARIABLES ] --- */
+:root {
+    --main-color: #00ff9d;
+    --glow-color: rgba(0, 255, 157, 0.5);
+    --bg-color: #0a0a0a;
+    --secondary-color: #ff00ff;
+    --secondary-glow: rgba(255, 0, 255, 0.4);
+    --border-color: #333;
+    --font: 'VT323', monospace;
+}
+
+/* --- [ TERMINAL OUTPUT ] --- */
+#terminal-output {
+    font-family: 'VT323', monospace;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    margin-bottom: 30px;
+    border: 1px solid var(--border-color);
+    line-height: 1.5;
+}
+
+@keyframes cursor-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* --- [ BASE & RESET ] --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    background-color: var(--bg-color);
+    color: var(--main-color);
+    font-family: var(--font);
+    font-size: 18px;
+    overflow: hidden; /* Hide scrollbars during preloader */
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%2300ff9d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l16 16m0-16L4 20"/></svg>') 12 12, auto;
+}
+
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+a:hover {
+    background-color: var(--secondary-color);
+    color: var(--bg-color);
+    text-shadow: 0 0 10px #fff;
+}
+
+h1, h2, h3 {
+    text-shadow: 0 0 5px var(--glow-color), 0 0 10px var(--glow-color);
+    animation: text-flicker 3s linear infinite;
+}
+
+h1 { font-size: 2.5em; letter-spacing: 4px; }
+h2 { font-size: 1.8em; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+
+/* --- [ PRELOADER ] --- */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    white-space: pre;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+/* --- [ BACKGROUND & CRT EFFECT ] --- */
+.scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998;
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            rgba(0,0,0,0.4),
+            rgba(0,0,0,0.4) 1px,
+            transparent 1px,
+            transparent 3px
+        );
+    animation: flicker 0.1s infinite;
+}
+
+/* --- [ MAIN LAYOUT ] --- */
+.site-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    animation: fadeIn 1s 2.5s forwards; /* Delay matches preloader */
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--main-color) var(--bg-color);
+}
+.site-container::-webkit-scrollbar { width: 8px; }
+.site-container::-webkit-scrollbar-track { background: var(--bg-color); }
+.site-container::-webkit-scrollbar-thumb { background-color: var(--main-color); }
+
+
+header {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+#ascii-header {
+    font-size: 1.5em;
+    color: var(--secondary-color);
+    text-shadow: 0 0 5px var(--secondary-glow), 0 0 10px var(--secondary-glow);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+    font-size: 1.2em;
+}
+
+nav a {
+    cursor: pointer;
+    padding: 5px 10px;
+    color: var(--main-color);
+    border: 1px solid transparent;
+}
+
+nav a.active, nav a:hover {
+    background-color: var(--main-color);
+    color: var(--bg-color);
+    text-shadow: none;
+}
+
+/* --- [ CONTENT SECTIONS ] --- */
+.content-section {
+    display: none;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    animation: content-fade-in 0.5s ease;
+}
+
+.content-section p {
+    line-height: 1.6;
+    margin-bottom: 1em;
+}
+
+#home-content { display: block; } /* Show home by default */
+
+/* --- [ GRID LAYOUTS FOR GALLERIES ] --- */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.grid-item {
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+.grid-item:hover {
+    border-color: var(--main-color);
+    transform: translateY(-5px);
+}
+
+/* Video Section */
+.video-embed iframe {
+    width: 100%;
+    height: 200px;
+    border: none;
+}
+.video-caption {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #ccc;
+}
+
+/* 3D Section */
+.d3-item { cursor: pointer; }
+.d3-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    background-color: #111;
+}
+.d3-caption {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #ccc;
+}
+
+/* WebDev Section */
+.webdev-item h3 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    color: var(--secondary-color);
+}
+
+/* Blog Section */
+.blog-snippet {
+    border: 1px solid var(--border-color);
+    margin-bottom: 20px;
+    padding: 15px;
+}
+.blog-snippet-header {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.blog-snippet-header h3 { font-size: 1.3em; margin: 0; }
+.blog-full-content {
+    display: none;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--border-color);
+}
+
+
+
+/* --- [ MODAL (for 3D images) ] --- */
+#image-modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    animation: content-fade-in 0.3s;
+}
+.modal-content {
+    position: relative;
+    max-width: 80vw;
+    max-height: 80vh;
+}
+#modal-img {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    display: block;
+    border: 2px solid var(--main-color);
+}
+#modal-caption {
+    text-align: center;
+    color: #ccc;
+    padding: 15px 0;
+    font-size: 1.2em;
+}
+.close-modal {
+    position: absolute;
+    top: -40px;
+    right: 0px;
+    color: #fff;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close-modal:hover { color: var(--secondary-color); }
+
+/* --- [ WINAMP PLAYER ] --- */
+#winamp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 275px;
+    border: 1px solid var(--border-color);
+    background: #222;
+    z-index: 500;
+    user-select: none;
+    cursor: grab;
+}
+.winamp-title-bar {
+    background: #111;
+    color: var(--main-color);
+    padding: 3px 5px;
+    font-size: 0.8em;
+    display: flex;
+    justify-content: space-between;
+}
+.winamp-content { padding: 10px; }
+.winamp-display {
+    background: #000;
+    border: 1px solid #000;
+    padding: 5px;
+    margin-bottom: 10px;
+    text-align: right;
+    font-size: 1.2em;
+}
+#winamp-time {
+    color: var(--main-color);
+    text-shadow: 0 0 5px var(--glow-color);
+}
+.winamp-controls {
+    display: flex;
+    justify-content: space-around;
+}
+.winamp-btn {
+    background: #444;
+    border: 1px solid #555;
+    color: #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: var(--font);
+}
+.winamp-btn:hover { background: #555; }
+.winamp-btn:active { background: var(--main-color); color: #000; }
+.winamp-visualizer {
+    height: 20px;
+    background: #000;
+    margin-top: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    padding: 2px;
+}
+.vis-bar {
+    flex-grow: 1;
+    background: var(--main-color);
+    box-shadow: 0 0 3px var(--glow-color);
+    transition: height 0.05s linear;
+}
+
+/* --- [ ANIMATIONS ] --- */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes content-fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.9; }
+}
+
+@keyframes text-flicker {
+    0% { text-shadow: 0 0 5px var(--glow-color); }
+    2% { text-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color); }
+    4% { text-shadow: 0 0 5px var(--glow-color); }
+    6% { text-shadow: 0 0 10px var(--glow-color); }
+    8% { text-shadow: none; }
+    9% { text-shadow: 0 0 5px var(--glow-color); }
+    100% { text-shadow: 0 0 5px var(--glow-color); }
+} 
