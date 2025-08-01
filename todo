@@ -1,0 +1,12 @@
+improve preloader
+
+make sure latest posts in homepage always appear in horizontal grid, now it resets after going to other tab and coming back to home tab
+
+in 3d and webdev tabs there shouldnt be a vertical scrollbar until it is needed, now it appears instantly
+
+blog posts appear instantly, they must appear only after the terminal text of blog section is finished writing
+
+add a footer
+
+improve header
+
