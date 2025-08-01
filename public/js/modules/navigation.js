@@ -162,19 +162,33 @@ export const showSection = (sectionId, contentSections, navLinks) => {
     const activeLink = document.querySelector(`nav a[data-section="${sectionId}"]`);
     
     if (activeSection) {
-        // Clear previous content
+        // Clear previous terminal content only
         const oldTerminal = activeSection.querySelector('.terminal-output');
         if (oldTerminal) {
             oldTerminal.remove();
         }
 
-        // Hide all children initially
-        Array.from(activeSection.children).forEach(child => {
-            child.style.opacity = '0';
-            child.style.display = 'none';
-        });
-
-        activeSection.style.display = 'block';
+        // For blog section, preserve the state
+        if (sectionId === 'blog-content') {
+            activeSection.style.display = 'block';
+            Array.from(activeSection.children).forEach(child => {
+                if (child.style.display === 'none') {
+                    child.style.display = 'block';
+                }
+                child.style.opacity = '1';
+            });
+        } else {
+            // For other sections, reset display
+            Array.from(activeSection.children).forEach(child => {
+                child.style.opacity = '0';
+                if (child.classList && child.classList.contains('grid-container')) {
+                    child.style.display = 'grid';
+                } else {
+                    child.style.display = 'none';
+                }
+            });
+            activeSection.style.display = 'block';
+        }
 
         // Type new content if available
         if (sectionContent[sectionId]) {

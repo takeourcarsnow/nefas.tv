@@ -222,11 +222,45 @@ nav a.active, nav a:hover {
     border: 1px solid var(--border-color);
     padding: 15px;
     transition: all 0.3s ease;
+    height: 100%; /* Ensure items can stretch */
 }
 .grid-item:hover {
     border-color: var(--main-color);
     transform: translateY(-5px);
 }
+
+/* Styles for posts on the Home tab grid */
+.home-post-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.home-post-item .home-post-type {
+    font-size: 0.9em;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.home-post-item .home-post-title {
+    font-size: 1.1em;
+    color: var(--main-color);
+    text-shadow: 0 0 3px var(--glow-color);
+    margin-bottom: 15px;
+    flex-grow: 1; /* Allows title to take up space, pushing date/link down */
+}
+
+.home-post-item .home-post-date {
+    font-size: 0.8em;
+    opacity: 0.7;
+    margin-bottom: 15px;
+}
+
+.home-post-item .home-post-link {
+    font-weight: bold;
+    align-self: flex-start;
+}
+
 
 /* Video Section */
 .video-embed iframe {
@@ -415,4 +449,4 @@ nav a.active, nav a:hover {
     8% { text-shadow: none; }
     9% { text-shadow: 0 0 5px var(--glow-color); }
     100% { text-shadow: 0 0 5px var(--glow-color); }
-} 
+}

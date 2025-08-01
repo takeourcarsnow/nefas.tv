@@ -6,6 +6,7 @@ import { showSection } from './modules/navigation.js';
 import { initBlogToggles } from './modules/blog.js';
 import { initImageModal } from './modules/modal.js';
 import { initWinampPlayer } from './modules/winamp.js';
+import { initHomePosts } from './modules/home.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize terminal output
@@ -33,11 +34,16 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const sectionId = link.getAttribute('data-section');
             showSection(sectionId, contentSections, navLinks);
+            if (sectionId === 'home-content') {
+                initHomePosts();
+            }
         });
     });
 
     // Initialize blog toggles
     initBlogToggles();
+    // Initialize home posts
+    initHomePosts();
 
     // Initialize image modal
     initImageModal();

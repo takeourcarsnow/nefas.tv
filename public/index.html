@@ -40,20 +40,7 @@
                 <div id="terminal-output"></div>
                 
                 <h3 style="margin-top: 40px; margin-bottom: 20px;">// LATEST POSTS_</h3>
-                <div class="grid-container">
-                    <div class="grid-item">
-                        <p><strong>[VIDEO]</strong> How to Waste 10 Hours in After Effects</p>
-                        <a href="#" onclick="showSection('video-content'); return false;">>> view</a>
-                    </div>
-                    <div class="grid-item">
-                        <p><strong>[3D]</strong> Orb#481 (it's another sphere)</p>
-                        <a href="#" onclick="showSection('d3-content'); return false;">>> view</a>
-                    </div>
-                    <div class="grid-item">
-                        <p><strong>[BLOG]</strong> Why Modern Webdev is a Dumpster Fire</p>
-                        <a href="#" onclick="showSection('blog-content'); return false;">>> view</a>
-                    </div>
-                </div>
+                <div id="home-posts-grid" class="grid-container"></div>
             </div>
 
             <!-- VIDEO SECTION -->
@@ -163,30 +150,7 @@
 
             <!-- BLOG SECTION -->
             <div id="blog-content" class="content-section">
-                <h2>> the blog</h2>
-                <p>unfiltered thoughts and long-form posting. click titles to expand/collapse.</p>
-                
-                <div class="blog-snippet">
-                    <div class="blog-snippet-header">
-                        <h3>> Why Modern Webdev is a Dumpster Fire</h3>
-                        <span class="blog-toggle">[ read more... ]</span>
-                    </div>
-                    <div class="blog-full-content">
-                        <p>Remember when you could just make an HTML file, upload it via FTP, and you had a website? I remember. Now you need a masters degree in package management just to make a 'hello world' app that weighs 400MB.</p>
-                        <p>We're running transpilers to turn javascript into javascript, using 500 dependencies to pad a string, and acting like virtual DOMs are a gift from god. It's a mess. We're building houses of cards on a foundation of sand, and we celebrate every time we add another floor without it collapsing immediately. Anyway, here's my tutorial on how to set up a React project with 85 build steps.</p>
-                    </div>
-                </div>
-                
-                <div class="blog-snippet">
-                    <div class="blog-snippet-header">
-                        <h3>> The Aesthetics of Decay</h3>
-                        <span class="blog-toggle">[ read more... ]</span>
-                    </div>
-                    <div class="blog-full-content">
-                        <p>There's something beautiful about forgotten things. Rusted signs, abandoned buildings, corrupted JPEGs, dead geocities pages. It's the digital and physical equivalent of a skull - a memento mori. A reminder that everything we build, everything we are, will eventually fall apart.</p>
-                        <p>This is why glitch art, vaporwave, and brutalism resonate. They embrace the imperfection and the inevitable decay. It's a rebellion against the slick, sterile, corporate-friendly design that dominates the modern internet. It's an aesthetic that admits we're all just temporary files in a failing hard drive.</p>
-                    </div>
-                </div>
+                <!-- Blog posts will be rendered here by blog.js -->
             </div>
 
             <!-- MISC SECTION -->
