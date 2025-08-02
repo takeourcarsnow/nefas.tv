@@ -69,6 +69,7 @@ export const typeContent = async (section, lines) => {
 
     for (const line of lines) {
         const lineElement = document.createElement('div');
+        lineElement.className = 'terminal-line';
         lineElement.style.color = line.color || '#00ff9d';
         
         if (line.text) {
@@ -120,6 +121,13 @@ export const typeContent = async (section, lines) => {
             charSpan.textContent = char;
             charSpan.style.opacity = '0';
             charSpan.style.transition = 'opacity 0.15s';
+            
+            // Special handling for spaces to ensure proper spacing
+            if (char === ' ') {
+                charSpan.style.whiteSpace = 'pre';
+                charSpan.style.display = 'inline';
+            }
+            
             lineElement.insertBefore(charSpan, cursor);
             
             // Trigger fade-in

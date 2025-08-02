@@ -26,8 +26,9 @@ function timeSince(dateStr) {
     return 'just now';
 }
 
-export const initBlogToggles = () => {
-    const blogContainer = document.getElementById('blog-content');
+export const initBlogToggles = (callback = null, targetContainer = null) => {
+    const blogContainer = targetContainer || document.getElementById('blog-content');
+    console.log('initBlogToggles called with container:', blogContainer);
     if (!blogContainer) return;
 
     // Get the stored expanded states
@@ -53,14 +54,19 @@ export const initBlogToggles = () => {
                 </div>
                 `;
             }).join('');
-            blogContainer.innerHTML = `
-                <h2>> the blog</h2>
+            
+            // If this is the main blog container (not a sub-container), add the header
+            const content = targetContainer ? 
+                snippets : 
+                `<h2>> the blog</h2>
                 <p>unfiltered thoughts and long-form posting. click titles to expand/collapse.</p>
-                ${snippets}
-            `;
+                ${snippets}`;
+                
+            console.log('Setting content in container:', blogContainer, 'Content length:', content.length);
+            blogContainer.innerHTML = content;
 
             // Add toggles
-            document.querySelectorAll('.blog-snippet-header').forEach(header => {
+            blogContainer.querySelectorAll('.blog-snippet-header').forEach(header => {
                 header.addEventListener('click', () => {
                     const fullContent = header.nextElementSibling;
                     const toggleText = header.querySelector('.blog-toggle');
@@ -80,5 +86,10 @@ export const initBlogToggles = () => {
                     sessionStorage.setItem('expandedPosts', JSON.stringify([...expandedPosts]));
                 });
             });
+
+            // Call callback if provided
+            if (callback) {
+                callback();
+            }
         });
 };

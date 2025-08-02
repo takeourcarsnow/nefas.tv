@@ -20,3 +20,20 @@ export const mainContent = [
     { text: '[WARNING] if your eyes bleed, that\'s a feature, not a bug', color: '#ff0000', delay: 100 },
     { text: '=============================================', color: '#666', delay: 100 }
 ];
+
+export const blogContent = [
+    { text: '> Accessing blog database...', color: '#00ff9d', delay: 500 },
+    { text: '> Scanning for new posts...', color: '#00ff9d', delay: 800 },
+    { text: '[INFO] Found several brain dumps', color: '#00ff00', delay: 300 },
+    { text: '> Loading unfiltered thoughts...', color: '#ff00ff', delay: 500 },
+    { text: '=============================================', color: '#666', delay: 100 },
+    { text: 'welcome to the blog section', color: '#ffff00', delay: 100 },
+    { text: 'where i post things that are too long for twitter', color: '#fff', delay: 50 },
+    { text: 'and too short for a book', color: '#fff', delay: 50 },
+    { text: '', delay: 300 },
+    { text: 'click on any title to expand the full post', color: '#00ff9d', delay: 100 },
+    { text: 'or don\'t. i\'m not your dad.', color: '#ff00ff', delay: 50 },
+    { text: '', delay: 300 },
+    { text: '[INFO] Posts loaded successfully', color: '#00ff00', delay: 100 },
+    { text: '=============================================', color: '#666', delay: 100 }
+];
