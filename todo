@@ -1,23 +1,27 @@
-improve preloader
+DONE improve preloader 
 
-make sure latest posts in homepage always appear in horizontal grid, now it resets after going to other tab and coming back to home tab
+DONE fix extra empty lines in terminal 
 
-in 3d and webdev tabs there shouldnt be a vertical scrollbar until it is needed, now it appears instantly
+DONE make sure latest posts in homepage always appear in horizontal grid, now it resets after going to other tab and coming back to home tab
 
-blog posts appear instantly, they must appear only after the terminal text of blog section is finished writing DONE
+DONE in 3d and webdev tabs there shouldnt be a vertical scrollbar until it is needed, now it appears instantly
 
-add a footer
+DONE blog posts appear instantly, they must appear only after the terminal text of blog section is finished writing 
 
-improve header
+DONE add a footer
 
-add background animation
+DONE improve header
+
+DONE add background animation
 
 improve music player, add more songs
 
-improve misc section by adding more content (like interesting links etc)
+REDOIT improve misc section by adding more content (like interesting links etc)
 
 add about me section
 
-improve text content in the webpage (some text in terminal is identical to static text in the sections, no need to repeat same lines twice, change one of each so its not identical)
+DONE improve text content in the webpage (some text in terminal is identical to static text in the sections, no need to repeat same lines twice, change one of each so its not identical)
 
-improve rendering on phone because i.e. terminal write on text  goes out of frame
+DONE improve rendering on phone because i.e. terminal write on text  goes out of frame
+
+DONE content appearing before finishing typing terminal text
