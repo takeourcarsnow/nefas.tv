@@ -1,7 +1,7 @@
 import { mainContent, blogContent } from './modules/content.js';
 import { getTimestamp, createTypeWriter } from './modules/terminal.js';
 import { preloaderFrames, initPreloader } from './modules/preloader.js';
-import { initHeaderAnimation } from './modules/header.js';
+import { initHeaderAnimation, initGlitchEffect } from './modules/header.js';
 import { showSection } from './modules/section-manager.js';
 import { initBlogToggles } from './modules/blog.js';
 import { initImageModal } from './modules/modal.js';
@@ -86,8 +86,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const asciiHeader = getElement('ascii-header');
-        if (asciiHeader) {
-            initHeaderAnimation(asciiHeader);
+        const asciiHeaderRight = getElement('ascii-header-right');
+        if (asciiHeader && asciiHeaderRight) {
+            initHeaderAnimation(asciiHeader, asciiHeaderRight);
+        }
+
+        // Initialize glitch effect on the main title
+        const headerTitle = document.querySelector('header h1');
+        if (headerTitle) {
+            initGlitchEffect(headerTitle);
         }
 
         const mainNav = getElement('main-nav');

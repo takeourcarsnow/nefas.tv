@@ -44,10 +44,24 @@ header h1:hover {
     text-shadow: 0 0 15px var(--main-glow), 0 0 25px var(--main-glow);
 }
 
-#ascii-header {
-    font-size: 2em;
-    color: var(--secondary-color);
-    text-shadow: 0 0 5px var(--secondary-glow), 0 0 10px var(--secondary-glow);
+/* Glitch effect styling */
+header h1.glitching {
+    animation: textGlitch 0.1s infinite;
+}
+
+@keyframes textGlitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-1px, 1px); }
+    40% { transform: translate(-1px, -1px); }
+    60% { transform: translate(1px, 1px); }
+    80% { transform: translate(1px, -1px); }
+    100% { transform: translate(0); }
+}
+
+#ascii-header, #ascii-header-right {
+    font-size: 1.2em;
+    color: var(--main-color);
+    text-shadow: 0 0 5px var(--glow-color), 0 0 10px var(--glow-color);
     transition: transform 0.2s ease, text-shadow 0.2s ease;
     margin-bottom: 15px;
     font-family: 'Courier New', monospace;
@@ -57,8 +71,8 @@ header h1:hover {
     user-select: none;
 }
 
-#ascii-header:hover {
-    text-shadow: 0 0 10px var(--secondary-glow), 0 0 20px var(--secondary-glow);
+#ascii-header:hover, #ascii-header-right:hover {
+    text-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color);
 }
 
 /* Responsive header improvements */
@@ -72,8 +86,8 @@ header h1:hover {
         margin-bottom: 10px;
     }
     
-    #ascii-header {
-        font-size: 1.6em;
+    #ascii-header, #ascii-header-right {
+        font-size: 1.1em;
         margin-bottom: 10px;
     }
 }
@@ -88,8 +102,8 @@ header h1:hover {
         margin-bottom: 8px;
     }
     
-    #ascii-header {
-        font-size: 1.3em;
+    #ascii-header, #ascii-header-right {
+        font-size: 1em;
         margin-bottom: 8px;
     }
 }

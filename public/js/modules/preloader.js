@@ -19,12 +19,15 @@ const generateFrame = (progress) => {
     const messageIndex = Math.min(Math.floor(progress * loadingMessages.length), loadingMessages.length - 1);
     const message = loadingMessages[messageIndex];
     
+    // Always reserve space for the completion message to prevent jumping
+    const completionLine = progress >= 1 ? '...RENDERING COMPLETE' : '';
+    
     return `[${'='.repeat(filled)}>${' '.repeat(empty)}] ${percentage}%
 
 SYSTEM.INIT...OK
 NEFAS.TV v1.0
 ${message}
-${progress >= 1 ? '...RENDERING COMPLETE' : ''}`;
+${completionLine}`;
 };
 
 // Pre-generate frames for better performance
@@ -38,6 +41,9 @@ export const initPreloader = (preloader, siteContainer, onComplete) => {
     
     let frameIndex = 0;
     const preloaderFrameCount = preloaderFrames.length;
+    
+    // Ensure body overflow is hidden during preloader (CSS should handle this initially)
+    document.body.style.overflow = 'hidden';
     
     // Add initial styles with hardware acceleration
     preloader.style.fontFamily = 'monospace';
@@ -72,7 +78,8 @@ export const initPreloader = (preloader, siteContainer, onComplete) => {
                 
                 setTimeout(() => {
                     preloader.style.display = 'none';
-                    document.body.style.overflow = 'auto';
+                    document.body.classList.add('preloader-complete');
+                    document.body.style.overflow = ''; // Remove inline style to let CSS take over
                     preloader.style.willChange = 'auto';
                     if (siteContainer) {
                         siteContainer.style.willChange = 'auto';
