@@ -1,3 +1,14 @@
+add about me section
+
+fix terminal windows margins (theres like an invisible extra line after last one on screen in terminal write on text)
+
+add more content and proper captions to 3d section
+
+few more blog entries
+
+
+
+---------------
 DONE improve preloader 
 
 DONE fix extra empty lines in terminal 
@@ -14,11 +25,9 @@ DONE improve header
 
 DONE add background animation
 
-improve music player, add more songs
+DONE improve music player
 
-REDOIT improve misc section by adding more content (like interesting links etc)
-
-add about me section
+DONE improve misc section by adding more content (like interesting links etc)
 
 DONE improve text content in the webpage (some text in terminal is identical to static text in the sections, no need to repeat same lines twice, change one of each so its not identical)
 
