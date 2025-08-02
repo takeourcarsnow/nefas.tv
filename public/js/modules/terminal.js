@@ -6,19 +6,19 @@ export const getTimestamp = () => {
 export const createTypeWriter = (terminalOutput, terminalLines) => {
     return async () => {
         for (const line of terminalLines) {
+            if (!line.text) continue; // Skip empty lines
+
             const lineElement = document.createElement('div');
             lineElement.className = 'terminal-line';
             lineElement.style.color = line.color || '#00ff9d';
-            
-            if (line.text) {
-                const timestamp = document.createElement('span');
-                timestamp.style.color = '#666';
-                timestamp.textContent = getTimestamp() + ' ';
-                lineElement.appendChild(timestamp);
-            }
+
+            const timestamp = document.createElement('span');
+            timestamp.style.color = '#666';
+            timestamp.textContent = getTimestamp() + ' ';
+            lineElement.appendChild(timestamp);
 
             terminalOutput.appendChild(lineElement);
-            
+
             // Create a cursor element that will move with the text
             const cursor = document.createElement('span');
             cursor.textContent = '▋';
