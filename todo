@@ -4,7 +4,7 @@ make sure latest posts in homepage always appear in horizontal grid, now it rese
 
 in 3d and webdev tabs there shouldnt be a vertical scrollbar until it is needed, now it appears instantly
 
-blog posts appear instantly, they must appear only after the terminal text of blog section is finished writing
+blog posts appear instantly, they must appear only after the terminal text of blog section is finished writing DONE
 
 add a footer
 
@@ -20,4 +20,4 @@ add about me section
 
 improve text content in the webpage (some text in terminal is identical to static text in the sections, no need to repeat same lines twice, change one of each so its not identical)
 
-improve rendering on phone because i.e. terminal write on text is kind of jumpy on phone
+improve rendering on phone because i.e. terminal write on text  goes out of frame
