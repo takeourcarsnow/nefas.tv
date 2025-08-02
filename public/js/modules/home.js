@@ -1,7 +1,36 @@
 // Fetch and render the latest posts in the home tab grid
+import { addDecryptingTextEffect, addTypewriterToStaticText } from './terminal.js';
+
 export function initHomePosts() {
     const grid = document.getElementById('home-posts-grid');
     if (!grid) return;
+    
+    // Apply effects to the header and caption every time (don't check if posts are loaded)
+    const headerElement = document.querySelector('#home-content .decrypt-text');
+    const captionElement = document.querySelector('#home-content .typewriter-text');
+    
+    // Ensure elements are completely cleared and hidden initially
+    if (headerElement) {
+        headerElement.textContent = '';
+        headerElement.style.visibility = 'hidden';
+        // Start decrypt effect immediately
+        setTimeout(() => {
+            addDecryptingTextEffect(headerElement, 0);
+        }, 100);
+    }
+    
+    // Start typewriter effect on caption after decrypt effect starts
+    if (captionElement) {
+        captionElement.textContent = '';
+        captionElement.style.visibility = 'hidden';
+        setTimeout(() => {
+            addTypewriterToStaticText(captionElement, 0);
+        }, 800);
+    }
+    
+    // If posts have already been loaded, don't fetch again
+    if (grid.children.length > 0) return;
+    
     fetch('/blog/posts.json')
         .then(res => res.json())
         .then(posts => {

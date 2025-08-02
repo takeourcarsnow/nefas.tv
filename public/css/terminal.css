@@ -1,45 +1,49 @@
 /* --- [ TERMINAL OUTPUT ] --- */
+
+/* Main terminal output */
 #terminal-output {
-    font-family: 'VT323', monospace;
     background: rgba(0, 0, 0, 0.3);
-    padding: 1.2rem 1.5rem 1.2rem 1.5rem;
-    margin-bottom: 2rem;
+    padding: 1.2rem 1.5rem 0.5rem 1.5rem;
     border: 1px solid var(--border-color);
-    line-height: 1.4;
-    /* Ensure terminal doesn't affect layout flow */
+}
+
+/* Apply base styles to both terminals */
+#terminal-output,
+#blog-terminal-output {
+    font-family: 'VT323', monospace;
     position: relative;
     width: 100%;
     box-sizing: border-box;
+    margin-bottom: 2rem;
+    line-height: 1.4;
 }
 
-.terminal-output:empty {
-    display: none !important;
-    height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
+/* Combined empty state handling */
+.terminal-output:empty,
 #terminal-output:empty {
-    display: none !important;
-    height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    display: none;
+    height: 0;
+    margin: 0;
+    padding: 0;
 }
 
-#terminal-output > div,
+/* Optimized terminal line styling */
 .terminal-line {
     margin: 0.2em 0;
-    padding: 0;
     line-height: 1.35;
     white-space: pre-wrap;
     word-spacing: normal;
 }
 
+/* Remove extra margin from last terminal line */
+.terminal-line:last-child {
+    margin-bottom: 0;
+}
+
 /* Cursor styling for typing animation */
-.terminal-line span[data-cursor] {
+.terminal-cursor {
     display: inline;
     vertical-align: baseline;
-    margin: 0;
-    padding: 0;
 }
 
 @keyframes cursor-blink {
@@ -47,24 +51,19 @@
     50% { opacity: 0; }
 }
 
-/* Blog terminal specific styling */
+/* Blog terminal - extends base with specific overrides */
 #blog-terminal-output {
-    font-family: 'VT323', monospace;
     background: transparent;
     padding: 1.5rem;
-    margin-bottom: 2rem;
     border: none;
     line-height: 1.25;
-    /* Ensure terminal doesn't affect layout flow */
-    position: relative;
-    width: 100%;
-    box-sizing: border-box;
 }
 
+/* Reset spacing for blog terminal content */
 #blog-terminal-output pre, 
 #blog-terminal-output div, 
 #blog-terminal-output span { 
-    margin: 0 !important; 
-    padding: 0 !important; 
-    line-height: 1.1 !important; 
+    margin: 0; 
+    padding: 0; 
+    line-height: 1.1; 
 }

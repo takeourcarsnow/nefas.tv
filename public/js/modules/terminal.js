@@ -52,19 +52,19 @@ export const createTypeWriter = (terminalOutput, terminalLines) => {
             
             for (let i = 0; i < line.text.length; i++) {
                 const char = line.text[i];
-                // Base typing speed with natural variation - optimized for better performance
-                let delay = Math.random() * 8 + 8; // Slightly faster: Random delay between 8-16ms
+                // Base typing speed with natural variation - much faster
+                let delay = Math.random() * 3 + 3; // Much faster: Random delay between 3-6ms
 
                 // Brief pauses for punctuation and spaces
                 if ('.!?,'.includes(char)) {
-                    delay += 30; // Reduced pause at punctuation
+                    delay += 10; // Reduced pause at punctuation
                 } else if (' '.includes(char)) {
-                    delay += 10; // Reduced pause at spaces
+                    delay += 3; // Reduced pause at spaces
                 }
 
                 // Rare brief pauses - reduced frequency for better performance
-                if (Math.random() < 0.03) { // 3% chance (reduced from 5%)
-                    delay += Math.random() * 50; // 0-50ms pause (reduced from 100ms)
+                if (Math.random() < 0.01) { // 1% chance (reduced from 3%)
+                    delay += Math.random() * 20; // 0-20ms pause (reduced from 50ms)
                 }
 
                 await new Promise(resolve => setTimeout(resolve, delay));
@@ -86,4 +86,101 @@ export const createTypeWriter = (terminalOutput, terminalLines) => {
             await new Promise(resolve => setTimeout(resolve, line.delay));
         }
     };
+};
+
+// Function to add typewriter effect to static captions while keeping them in place
+export const addTypewriterToStaticText = async (element, delay = 0, text = null) => {
+    if (!element) return;
+    
+    // Use provided text or get from element's data attribute or current content
+    const originalText = text || element.dataset.originalText || element.textContent;
+    
+    // Wait for the delay before starting
+    if (delay > 0) {
+        await new Promise(resolve => setTimeout(resolve, delay));
+    }
+    
+    // Ensure the element is visible and empty
+    element.style.visibility = 'visible';
+    element.textContent = '';
+    
+    // Type each character
+    for (let i = 0; i < originalText.length; i++) {
+        const char = originalText[i];
+        // Base typing speed with natural variation
+        let typingDelay = Math.random() * 5 + 8; // Random delay between 8-13ms
+        
+        // Brief pauses for punctuation and spaces
+        if ('.!?,'.includes(char)) {
+            typingDelay += 15; // Pause at punctuation
+        } else if (' '.includes(char)) {
+            typingDelay += 5; // Pause at spaces
+        }
+        
+        // Rare brief pauses for natural feel
+        if (Math.random() < 0.02) { // 2% chance
+            typingDelay += Math.random() * 30; // 0-30ms pause
+        }
+        
+        await new Promise(resolve => setTimeout(resolve, typingDelay));
+        element.textContent += char;
+    }
+};
+
+// Function to add decrypting/scrambling text effect to headers
+export const addDecryptingTextEffect = async (element, delay = 0, text = null) => {
+    if (!element) return;
+    
+    // Use provided text or get from element's data attribute or current content
+    const originalText = text || element.dataset.originalText || element.textContent;
+    const chars = '!@#$%^&*()_+-=[]{}|;:,.<>?~`';
+    
+    // Wait for the delay before starting
+    if (delay > 0) {
+        await new Promise(resolve => setTimeout(resolve, delay));
+    }
+    
+    // Ensure the element is visible
+    element.style.visibility = 'visible';
+    
+    // Start with scrambled text
+    let scrambledText = originalText.split('').map(char => {
+        if (char === ' ' || char === '>' || char === '<') return char; // Keep spaces and symbols
+        return chars[Math.floor(Math.random() * chars.length)];
+    }).join('');
+    
+    element.textContent = scrambledText;
+    
+    // Gradually reveal the correct characters
+    const revealDuration = 1000; // Total time for decryption
+    const frames = 30; // Number of animation frames
+    const frameDelay = revealDuration / frames;
+    
+    for (let frame = 0; frame <= frames; frame++) {
+        const progress = frame / frames;
+        const revealCount = Math.floor(progress * originalText.length);
+        
+        let currentText = '';
+        for (let i = 0; i < originalText.length; i++) {
+            if (i < revealCount) {
+                // Character is revealed
+                currentText += originalText[i];
+            } else if (originalText[i] === ' ' || originalText[i] === '>' || originalText[i] === '<') {
+                // Keep spaces and symbols
+                currentText += originalText[i];
+            } else {
+                // Still scrambled
+                currentText += chars[Math.floor(Math.random() * chars.length)];
+            }
+        }
+        
+        element.textContent = currentText;
+        
+        if (frame < frames) {
+            await new Promise(resolve => setTimeout(resolve, frameDelay));
+        }
+    }
+    
+    // Ensure final text is correct
+    element.textContent = originalText;
 };

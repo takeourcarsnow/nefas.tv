@@ -2,7 +2,7 @@ import { mainContent, blogContent } from './modules/content.js';
 import { getTimestamp, createTypeWriter } from './modules/terminal.js';
 import { preloaderFrames, initPreloader } from './modules/preloader.js';
 import { initHeaderAnimation, initGlitchEffect } from './modules/header.js';
-import { showSection } from './modules/section-manager.js';
+import { showSection, resetSection, resetAllSections } from './modules/section-manager.js';
 import { initBlogToggles } from './modules/blog.js';
 import { initImageModal } from './modules/modal.js';
 import { initWinampPlayer } from './modules/winamp.js';
@@ -12,6 +12,9 @@ import BackgroundEffects from './modules/background-effects.js';
 
 // Cache DOM elements for better performance
 const domCache = {};
+
+// Track which sections have been initialized to avoid re-initialization
+const initializedSections = new Set();
 
 // Function to get cached DOM elements
 const getElement = (id) => {
@@ -73,15 +76,29 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize background effects
         const backgroundEffects = new BackgroundEffects();
 
-        // Only run the typewriter for the terminal output if on the Home section
-        // Remove duplicate terminal output by not running this here
+        // Cache navigation elements first
+        const mainNav = getElement('main-nav');
+        const contentSections = document.querySelectorAll('.content-section');
+        const navLinks = mainNav ? mainNav.querySelectorAll('a') : [];
 
         const preloader = getElement('preloader');
         const siteContainer = document.querySelector('.site-container');
         
         if (preloader && siteContainer) {
             initPreloader(preloader, siteContainer, () => {
-                // No typewriter here; handled by Home tab logic
+                // Start home section immediately when preloader finishes its frames
+                // This will begin as the preloader starts its fade out
+                const homeLink = mainNav.querySelector('a[data-section="home-content"]');
+                if (homeLink) {
+                    homeLink.click();
+                } else {
+                    // Fallback: show section and initialize home posts
+                    showSection('home-content', contentSections, navLinks);
+                    if (!initializedSections.has('home-content')) {
+                        initializedSections.add('home-content');
+                        initHomePosts();
+                    }
+                }
             });
         }
 
@@ -97,15 +114,15 @@ document.addEventListener('DOMContentLoaded', () => {
             initGlitchEffect(headerTitle);
         }
 
-        const mainNav = getElement('main-nav');
-        const contentSections = document.querySelectorAll('.content-section');
-        
         if (mainNav && contentSections.length > 0) {
-            const navLinks = mainNav.querySelectorAll('a');
             
             window.showSection = function(sectionId) {
                 showSection(sectionId, contentSections, navLinks);
             };
+
+            // Expose reset functions for debugging
+            window.resetSection = resetSection;
+            window.resetAllSections = resetAllSections;
 
             mainNav.addEventListener('click', (e) => {
                 const link = e.target.closest('a[data-section]');
@@ -115,22 +132,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 const sectionId = link.getAttribute('data-section');
                 showSection(sectionId, contentSections, navLinks);
                 
+                // Always initialize home posts when showing home section to ensure effects work
                 if (sectionId === 'home-content') {
                     initHomePosts();
-                } else if (sectionId === 'blog-content') {
-                    initBlogSection();
+                }
+                
+                // Only initialize content if this section hasn't been initialized before
+                if (!initializedSections.has(sectionId)) {
+                    initializedSections.add(sectionId);
+                    
+                    if (sectionId === 'blog-content') {
+                        initBlogSection();
+                    }
                 }
             });
 
-            // Simulate clicking the Home tab on load
-            const homeLink = mainNav.querySelector('a[data-section="home-content"]');
-            if (homeLink) {
-                homeLink.click();
-            } else {
-                // Fallback: show section and initialize home posts
-                showSection('home-content', contentSections, navLinks);
-                initHomePosts();
-            }
+            // Don't auto-click home tab here - it's now handled in preloader callback
         }
 
         // Removed duplicate initHomePosts(); now handled above
