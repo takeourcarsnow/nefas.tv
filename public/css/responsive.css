@@ -1,0 +1,49 @@
+/* --- [ RESPONSIVE DESIGN ] --- */
+@media (max-width: 600px) {
+  #terminal-output {
+    font-size: 1.4rem;
+    overflow-x: auto;
+    padding: 1.2rem;
+    word-break: break-word;
+  }
+  .terminal-line {
+    white-space: pre-line;
+    word-break: break-word;
+    font-size: 1.4rem;
+  }
+  
+  .site-container {
+    padding: 1rem;
+  }
+  
+  .grid-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  nav {
+    font-size: 1.4rem;
+    gap: 1rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    letter-spacing: 0.2rem;
+  }
+  
+  #winamp {
+    width: 20rem;
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  html {
+    font-size: 55%; /* Smaller base font size for very small screens */
+  }
+  
+  .grid-item {
+    padding: 1rem;
+  }
+}

@@ -1,0 +1,95 @@
+/* --- [ HEADER ] --- */
+header {
+    text-align: center;
+    padding: 30px 20px 20px 20px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, transparent 0%, rgba(0, 255, 0, 0.02) 50%, transparent 100%);
+    position: relative;
+    overflow: hidden;
+    /* Ensure header stays in place */
+    flex-shrink: 0;
+    flex-grow: 0;
+    z-index: 100;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.05), transparent);
+    animation: shimmer 3s infinite;
+    pointer-events: none;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+header h1 {
+    margin: 10px 0 0 0;
+    font-size: 2.2em;
+    color: var(--main-color);
+    text-shadow: 0 0 10px var(--main-glow);
+    transition: letter-spacing 0.3s ease, text-shadow 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+header h1:hover {
+    text-shadow: 0 0 15px var(--main-glow), 0 0 25px var(--main-glow);
+}
+
+#ascii-header {
+    font-size: 2em;
+    color: var(--secondary-color);
+    text-shadow: 0 0 5px var(--secondary-glow), 0 0 10px var(--secondary-glow);
+    transition: transform 0.2s ease, text-shadow 0.2s ease;
+    margin-bottom: 15px;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.1em;
+    position: relative;
+    z-index: 2;
+    user-select: none;
+}
+
+#ascii-header:hover {
+    text-shadow: 0 0 10px var(--secondary-glow), 0 0 20px var(--secondary-glow);
+}
+
+/* Responsive header improvements */
+@media (max-width: 768px) {
+    header {
+        padding: 20px 15px 15px 15px;
+    }
+    
+    header h1 {
+        font-size: 1.8em;
+        margin-bottom: 10px;
+    }
+    
+    #ascii-header {
+        font-size: 1.6em;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 15px 10px 10px 10px;
+    }
+    
+    header h1 {
+        font-size: 1.5em;
+        margin-bottom: 8px;
+    }
+    
+    #ascii-header {
+        font-size: 1.3em;
+        margin-bottom: 8px;
+    }
+}

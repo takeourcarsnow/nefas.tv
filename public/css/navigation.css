@@ -1,0 +1,27 @@
+/* --- [ NAVIGATION ] --- */
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+    font-size: 1.2em;
+    /* Ensure nav stays in place */
+    flex-shrink: 0;
+    flex-grow: 0;
+    position: relative;
+    z-index: 99;
+}
+
+nav a {
+    cursor: pointer;
+    padding: 5px 10px;
+    color: var(--main-color);
+    border: 1px solid transparent;
+}
+
+nav a.active, nav a:hover {
+    background-color: var(--main-color);
+    color: var(--bg-color);
+    text-shadow: none;
+}

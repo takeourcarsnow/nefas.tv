@@ -1,0 +1,39 @@
+{
+  "name": "nefas-tv",
+  "version": "1.0.0",
+  "description": "A vaporwave-inspired personal website with retro aesthetics and interactive elements",
+  "type": "module",
+  "scripts": {
+    "dev": "npx serve public -p 3000",
+    "start": "npx serve public -p 3000",
+    "build": "echo 'Static site - no build required'",
+    "preview": "npx serve public -p 4173",
+    "lint": "npx eslint public/js/**/*.js",
+    "lint:fix": "npx eslint public/js/**/*.js --fix",
+    "validate": "npx html-validate public/index.html"
+  },
+  "keywords": [
+    "vaporwave",
+    "retro",
+    "portfolio",
+    "personal-website",
+    "interactive",
+    "terminal",
+    "aesthetic"
+  ],
+  "author": "nefas",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "html-validate": "^8.15.0",
+    "serve": "^14.2.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
