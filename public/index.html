@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nefas.tv</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <base href="/">
+    <script type="module" src="/js/main.js"></script>
+</head>
+<body>
+
+    <div id="preloader"></div>
+
+    <div class="scanlines"></div>
+
+    <div class="site-container">
+        <header>
+            <div id="ascii-header"></div>
+            <h1>nefas.tv</h1>
+        </header>
+
+        <nav id="main-nav">
+            <a data-section="home-content" class="active">[ home ]</a>
+            <a data-section="video-content">[ video ]</a>
+            <a data-section="photo-content">[ photo ]</a>
+            <a data-section="d3-content">[ 3d ]</a>
+            <a data-section="webdev-content">[ webdev ]</a>
+            <a data-section="blog-content">[ blog ]</a>
+            <a data-section="misc-content">[ misc ]</a>
+        </nav>
+
+        <main id="content-area">
+
+            <!-- HOME SECTION -->
+            <div id="home-content" class="content-section">
+                <div id="terminal-output"></div>
+                
+                <h3 style="margin-top: 40px; margin-bottom: 20px;">// LATEST POSTS_</h3>
+                <div id="home-posts-grid" class="grid-container"></div>
+            </div>
+
+            <!-- VIDEO SECTION -->
+            <div id="video-content" class="content-section">
+                <h2>> video feed</h2>
+                <p>a collection of moving pictures to rot your brain. i'll replace these with my own stuff eventually. probably.</p>
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <div class="video-embed">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <p class="video-caption">> HOW TO WASTE 10 HOURS IN AFTER EFFECTS</p>
+                    </div>
+                    <div class="grid-item">
+                        <div class="video-embed">
+                            <iframe src="https://www.youtube.com/embed/jfKfPfyJRdk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <p class="video-caption">> rare lofi hip hop mix to stare at code to</p>
+                    </div>
+                    <div class="grid-item">
+                         <div class="video-embed">
+                            <iframe src="https://www.youtube.com/embed/5qap5aO4i9A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <p class="video-caption">> datamoshing tutorial for the terminally online</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PHOTO SECTION -->
+            <div id="photo-content" class="content-section">
+                <h2>> photography</h2>
+                <p>i point my camera at things. mostly at night. here's my instagram feed. go give me validation.</p>
+                <div class="instagram-feed" style="max-width:800px;margin:30px auto 0 auto;border:1px solid #222;border-radius:10px;overflow:hidden;box-shadow:0 4px 10px rgba(0,0,0,0.2);background:#111;">
+                    <iframe 
+                        src="https://www.instagram.com/nefotografija/embed" 
+                        width="100%" 
+                        height="600" 
+                        frameborder="0" 
+                        scrolling="no" 
+                        allowtransparency="true"
+                        style="display:block;">
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- 3D SECTION -->
+            <div id="d3-content" class="content-section">
+                <h2>> 3D garbage</h2>
+                <p>some abstract garbage i cooked up in blender, c4d, and houdini. it's mostly shiny spheres and particle nonsense. click to embiggen.</p>
+                <div class="grid-container">
+                    <div class="grid-item d3-item" data-src="images/orb481.jpg" data-caption="Orb#481 (it's another sphere)">
+                        <img src="images/orb481.jpg" alt="3d render">
+                        <p class="d3-caption">> Orb#481</p>
+                    </div>
+                    <div class="grid-item d3-item" data-src="images/particles.jpg" data-caption="Particle field test. my gpu cried.">
+                        <img src="images/particles.jpg" alt="3d render">
+                        <p class="d3-caption">> Particle Field</p>
+                    </div>
+                    <div class="grid-item d3-item" data-src="images/houdini.jpg" data-caption="Houdini broke and made this. I'm calling it art.">
+                        <img src="images/houdini.jpg" alt="3d render">
+                        <p class="d3-caption">> Happy Accident</p>
+                    </div>
+                    <div class="grid-item d3-item" data-src="images/torus.jpg" data-caption="Chrome Torus. Maximum vaporwave.">
+                        <img src="images/torus.jpg" alt="3d render">
+                        <p class="d3-caption">> Chrome Torus</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- WEBDEV SECTION -->
+            <div id="webdev-content" class="content-section">
+                <h2>> webdev projects</h2>
+                <p>i occasionally write code that gets deployed to the internet. here are some examples of me wage-cucking for big tech or just making dumb shit for fun.</p>
+                <div class="grid-container">
+                    <div class="grid-item webdev-item">
+                        <img src="images/pasakai.jpg" alt="pasakai.lt screenshot" style="width:100%;height:100px;object-fit:cover;margin-bottom:8px;border-radius:6px;">
+                        <a href="http://pasakai.lt" target="_blank"><h3>> pasakai.lt</h3></a>
+                        <p>some storybook site. probably for kids. i don't remember.</p>
+                    </div>
+                    <div class="grid-item webdev-item">
+                        <img src="images/inhaiku.jpg" alt="inhaiku.lt screenshot" style="width:100%;height:100px;object-fit:cover;margin-bottom:8px;border-radius:6px;">
+                        <a href="http://inhaiku.lt" target="_blank"><h3>> inhaiku.lt</h3></a>
+                        <p>generates haikus. the pinnacle of artificial intelligence.</p>
+                    </div>
+                    <div class="grid-item webdev-item">
+                        <img src="images/particleswebsite.jpg" alt="particles.lt screenshot" style="width:100%;height:100px;object-fit:cover;margin-bottom:8px;border-radius:6px;">
+                        <a href="http://particles.lt" target="_blank"><h3>> particles.lt</h3></a>
+                        <p>more particle nonsense, but this time in a browser. runs at 5fps.</p>
+                    </div>
+                    <div class="grid-item webdev-item">
+                        <img src="images/drummachine.jpg" alt="drummachine.art screenshot" style="width:100%;height:100px;object-fit:cover;margin-bottom:8px;border-radius:6px;">
+                        <a href="http://drummachine.art" target="_blank"><h3>> drummachine.art</h3></a>
+                        <p>make sick beats in your browser. or just annoying noises.</p>
+                    </div>
+                    <div class="grid-item webdev-item">
+                        <img src="images/greentext.jpg" alt="greentext.fun screenshot" style="width:100%;height:100px;object-fit:cover;margin-bottom:8px;border-radius:6px;">
+                        <a href="http://greentext.fun" target="_blank"><h3>> greentext.fun</h3></a>
+                        <p>a shrine to the greatest literary format of our time.</p>
+                    </div>
+                    <div class="grid-item webdev-item">
+                        <img src="images/asciid.jpg" alt="asciid.art screenshot" style="width:100%;height:100px;object-fit:cover;margin-bottom:8px;border-radius:6px;">
+                        <a href="http://asciid.art" target="_blank"><h3>> asciid.art</h3></a>
+                        <p>turn images into ascii art. because of course.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BLOG SECTION -->
+            <div id="blog-content" class="content-section">
+                <!-- Blog posts will be rendered here by blog.js -->
+            </div>
+
+            <!-- MISC SECTION -->
+            <div id="misc-content" class="content-section">
+                <h2>> misc</h2>
+                <p>a digital shoebox for things that don't fit anywhere else. links, files, random thoughts. check back later, or don't. i'm not your dad.</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- 3D IMAGE MODAL -->
+    <div id="image-modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <img id="modal-img" src="">
+            <div id="modal-caption"></div>
+        </div>
+    </div>
+    
+    <!-- WINAMP PLAYER -->
+    <div id="winamp">
+        <div class="winamp-title-bar">
+            <span>nefas.tv player</span>
+            <span>&times;</span>
+        </div>
+        <div class="winamp-content">
+            <div class="winamp-display">
+                <span id="winamp-time">00:00</span>
+            </div>
+            <div class="winamp-visualizer" id="winamp-visualizer">
+                <!-- Bars will be generated by JS -->
+            </div>
+            <div class="winamp-controls">
+                <button class="winamp-btn" id="play-btn">PLAY</button>
+                <button class="winamp-btn" id="pause-btn">PAUSE</button>
+                <button class="winamp-btn" id="stop-btn">STOP</button>
+            </div>
+        </div>
+    </div>
+    <!-- !!! IMPORTANT: Replace this audio source with your own MP3 file !!! -->
+    <audio id="audio-player" src="audio/vaporwave.mp3"></audio>
+</body>
+</html> 

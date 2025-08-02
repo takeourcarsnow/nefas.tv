@@ -1,0 +1,25 @@
+/* --- [ ANIMATIONS ] --- */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes content-fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.9; }
+}
+
+@keyframes text-flicker {
+    0% { text-shadow: 0 0 5px var(--glow-color); }
+    2% { text-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color); }
+    4% { text-shadow: 0 0 5px var(--glow-color); }
+    6% { text-shadow: 0 0 10px var(--glow-color); }
+    8% { text-shadow: none; }
+    9% { text-shadow: 0 0 5px var(--glow-color); }
+    100% { text-shadow: 0 0 5px var(--glow-color); }
+}

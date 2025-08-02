@@ -1,0 +1,35 @@
+/* --- [ BASE & RESET ] --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    background-color: var(--bg-color);
+    color: var(--main-color);
+    font-family: var(--font);
+    font-size: 18px;
+    overflow: hidden;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%2300ff9d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l16 16m0-16L4 20"/></svg>') 12 12, auto;
+}
+
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+a:hover {
+    background-color: var(--secondary-color);
+    color: var(--bg-color);
+    text-shadow: 0 0 10px #fff;
+}
+
+h1, h2, h3 {
+    text-shadow: 0 0 5px var(--glow-color), 0 0 10px var(--glow-color);
+    animation: text-flicker 3s linear infinite;
+}
+
+h1 { font-size: 2.5em; letter-spacing: 4px; }
+h2 { font-size: 1.8em; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
