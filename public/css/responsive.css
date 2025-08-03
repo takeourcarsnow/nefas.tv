@@ -1,0 +1,193 @@
+/* --- [ RESPONSIVE DESIGN ] --- */
+@media (max-width: 600px) {
+  #terminal-output {
+    font-size: 1.4rem;
+    overflow-x: auto;
+    padding: 1.2rem;
+    word-break: break-word;
+  }
+  .terminal-line {
+    white-space: pre-line;
+    word-break: break-word;
+    font-size: 1.4rem;
+  }
+  
+  .site-container {
+    padding: 1rem;
+  }
+  
+  .grid-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  /* Fixed navigation for mobile */
+  nav {
+    font-size: 1.2rem; /* Reduced from 1.4rem to prevent overflow */
+    gap: 0.8rem; /* Reduced gap */
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 20px;
+    /* Ensure visibility */
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative;
+    z-index: 1000;
+    /* Force hardware acceleration for smoother rendering */
+    will-change: transform;
+    backface-visibility: hidden;
+    /* Prevent sub-pixel rendering issues */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Ensure nav links are visible and properly sized */
+  nav a {
+    display: inline-block !important;
+    padding: 8px 12px;
+    min-width: auto;
+    white-space: nowrap;
+    font-size: inherit;
+    color: var(--main-color) !important;
+    border: 1px solid transparent;
+    background-color: transparent;
+    text-decoration: none;
+    /* Force visibility */
+    visibility: visible !important;
+    opacity: 1 !important;
+    /* Ensure consistent box sizing */
+    box-sizing: border-box !important;
+    /* Fix sub-pixel rendering issues */
+    vertical-align: top;
+    line-height: 1;
+    transform: translateZ(0);
+    -webkit-font-smoothing: antialiased;
+    /* Force consistent height */
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    /* Prevent layout shifts on bold text */
+    font-weight: normal;
+  }
+  
+  /* Active and hover states for mobile */
+  nav a.active,
+  nav a:hover {
+    background-color: var(--main-color) !important;
+    color: var(--bg-color) !important;
+    border-color: var(--main-color) !important;
+    font-weight: bold !important;
+    text-shadow: none !important;
+    /* Ensure consistent padding and dimensions */
+    padding: 8px 12px !important;
+    box-sizing: border-box !important;
+    /* Fix sub-pixel rendering issues */
+    vertical-align: top !important;
+    line-height: 1 !important;
+    transform: translateZ(0) !important;
+    -webkit-font-smoothing: antialiased !important;
+    /* Force consistent height */
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    /* Ensure background only covers text area */
+    display: inline-block !important;
+    overflow: hidden !important;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    letter-spacing: 0.2rem;
+  }
+  
+  #winamp {
+    width: 20rem;
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  html {
+    font-size: 55%; /* Smaller base font size for very small screens */
+  }
+  
+  .grid-item {
+    padding: 1rem;
+  }
+  
+  /* Extra small screen navigation fixes */
+  nav {
+    font-size: 1.1rem !important; /* Even smaller for tiny screens */
+    gap: 0.5rem !important;
+    padding: 0 0.5rem;
+  }
+  
+  nav a {
+    padding: 6px 8px !important;
+    font-size: 0.9rem !important;
+    height: auto !important;
+    display: inline-block !important;
+    text-align: center !important;
+    /* Ensure consistent margins */
+    margin: 3px !important;
+    /* Ensure consistent box sizing */
+    box-sizing: border-box !important;
+    /* Fix sub-pixel rendering issues */
+    vertical-align: top !important;
+    line-height: 1 !important;
+    transform: translateZ(0) !important;
+    -webkit-font-smoothing: antialiased !important;
+  }
+  
+  /* Ensure active state consistency for extra small screens */
+  nav a.active,
+  nav a:hover {
+    padding: 6px 8px !important;
+    margin: 3px !important;
+    box-sizing: border-box !important;
+    /* Fix sub-pixel rendering issues */
+    vertical-align: top !important;
+    line-height: 1 !important;
+    transform: translateZ(0) !important;
+    -webkit-font-smoothing: antialiased !important;
+  }
+  
+  .site-container {
+    padding: 0.5rem;
+  }
+}
+
+/* Additional fix for landscape orientation on mobile */
+@media (max-width: 800px) and (max-height: 500px) {
+  nav {
+    font-size: 1rem !important;
+    gap: 0.5rem !important;
+    margin-bottom: 15px;
+  }
+  
+  nav a {
+    padding: 4px 8px !important;
+    /* Ensure consistent box sizing */
+    box-sizing: border-box !important;
+    /* Fix sub-pixel rendering issues */
+    vertical-align: top !important;
+    line-height: 1 !important;
+    transform: translateZ(0) !important;
+    -webkit-font-smoothing: antialiased !important;
+  }
+  
+  /* Ensure active state consistency for landscape orientation */
+  nav a.active,
+  nav a:hover {
+    padding: 4px 8px !important;
+    box-sizing: border-box !important;
+    /* Fix sub-pixel rendering issues */
+    vertical-align: top !important;
+    line-height: 1 !important;
+    transform: translateZ(0) !important;
+    -webkit-font-smoothing: antialiased !important;
+  }
+}
