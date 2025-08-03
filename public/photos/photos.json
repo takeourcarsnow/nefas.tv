@@ -1,0 +1,79 @@
+[
+  {
+    "type": "album",
+    "id": "album1", 
+    "title": "Urban Explorations",
+    "description": "Capturing the essence of city life through my lens",
+    "coverImage": "images/photos/album1/1.jpg",
+    "date": "2025-08-01",
+    "tags": ["photography", "urban", "street", "nefas"],
+    "photos": [
+      {
+        "id": "album1_1",
+        "title": "Street Corner",
+        "description": "Light and shadows at the intersection",
+        "image": "images/photos/album1/1.jpg",
+        "thumbnail": "images/photos/album1/1.jpg"
+      },
+      {
+        "id": "album1_2", 
+        "title": "City Rhythm",
+        "description": "The pulse of urban movement",
+        "image": "images/photos/album1/2.jpg",
+        "thumbnail": "images/photos/album1/2.jpg"
+      },
+      {
+        "id": "album1_3",
+        "title": "Concrete Dreams",
+        "description": "Architecture meets imagination",
+        "image": "images/photos/album1/3.jpg",
+        "thumbnail": "images/photos/album1/3.jpg"
+      }
+    ]
+  },
+  {
+    "type": "album",
+    "id": "album2",
+    "title": "Natural Moments", 
+    "description": "Finding beauty in the organic world",
+    "coverImage": "images/photos/album2/1.jpg",
+    "date": "2025-07-28",
+    "tags": ["photography", "nature", "landscape", "nefas"],
+    "photos": [
+      {
+        "id": "album2_1",
+        "title": "Morning Light",
+        "description": "Dawn breaking through the trees",
+        "image": "images/photos/album2/1.jpg",
+        "thumbnail": "images/photos/album2/1.jpg"
+      },
+      {
+        "id": "album2_2",
+        "title": "Water Reflections",
+        "description": "Mirror images in still water",
+        "image": "images/photos/album2/2.jpg", 
+        "thumbnail": "images/photos/album2/2.jpg"
+      }
+    ]
+  },
+  {
+    "type": "single",
+    "id": "photo1",
+    "title": "Captured Moment #1",
+    "description": "A glimpse through my lens",
+    "image": "images/photos/single/1.jpg",
+    "thumbnail": "images/photos/single/1.jpg",
+    "date": "2025-07-25",
+    "tags": ["photography", "original", "nefas"]
+  },
+  {
+    "type": "single", 
+    "id": "photo2",
+    "title": "Captured Moment #2",
+    "description": "Another perspective from the streets",
+    "image": "images/photos/single/2.jpg",
+    "thumbnail": "images/photos/single/2.jpg",
+    "date": "2025-07-20",
+    "tags": ["photography", "original", "nefas"]
+  }
+]
