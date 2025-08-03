@@ -1,4 +1,0 @@
-title: Neon Cube Matrix
-description: Floating geometric forms in digital space
-date: 2025-08-01
-tags: 3d, render, neon, geometric
