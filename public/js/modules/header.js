@@ -5,6 +5,31 @@ export const rightFrames = ['<]', ' <]', '< ]', '<]'];
 const glitchChars = ['#', '@', '$', '%', '&', '*', '!', '?', '0', '1', 'X', 'Z', 'Q'];
 const originalText = 'nefas.tv';
 
+export const initScrollingText = () => {
+    const scrollingText = document.querySelector('.scroll-content');
+    if (!scrollingText) return;
+    
+    // Add subtle flicker effect to simulate LED display
+    setInterval(() => {
+        if (Math.random() < 0.05) { // 5% chance to flicker
+            scrollingText.style.opacity = '0.7';
+            setTimeout(() => {
+                scrollingText.style.opacity = '1';
+            }, 50 + Math.random() * 100);
+        }
+    }, 500);
+    
+    // Occasionally change text brightness for LED effect
+    setInterval(() => {
+        if (Math.random() < 0.1) { // 10% chance
+            scrollingText.style.textShadow = '0 0 8px var(--main-color), 0 0 15px var(--glow-color), 0 0 20px var(--glow-color)';
+            setTimeout(() => {
+                scrollingText.style.textShadow = '0 0 3px var(--main-color), 0 0 6px var(--glow-color), 0 0 9px var(--glow-color)';
+            }, 200 + Math.random() * 300);
+        }
+    }, 1000);
+};
+
 export const initHeaderAnimation = (asciiHeader, asciiHeaderRight) => {
     let headerFrameIndex = 0;
     setInterval(() => {

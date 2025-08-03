@@ -73,19 +73,19 @@ export const typeContent = async (section, lines) => {
         // Type each character with human-like variations
         for (let i = 0; i < line.text.length; i++) {
             const char = line.text[i];
-            // Base typing speed with natural variation - much faster
-            let delay = Math.random() * 3 + 3; // Much faster: Random delay between 3-6ms
+            // Much faster typing speed with minimal variation
+            let delay = Math.random() * 1 + 1; // Very fast: Random delay between 1-2ms
 
-            // Brief pauses for punctuation and spaces
+            // Minimal pauses for punctuation and spaces
             if ('.!?,'.includes(char)) {
-                delay += 15; // Reduced pause at punctuation
+                delay += 3; // Very brief pause at punctuation
             } else if (' '.includes(char)) {
-                delay += 5; // Reduced pause at spaces
+                delay += 1; // Almost no pause at spaces
             }
 
-            // Very rare brief pauses
-            if (Math.random() < 0.02) { // 2% chance (reduced from 5%)
-                delay += Math.random() * 30; // 0-30ms pause (reduced from 100ms)
+            // Extremely rare brief pauses
+            if (Math.random() < 0.005) { // 0.5% chance (very rare)
+                delay += Math.random() * 10; // 0-10ms pause (minimal)
             }
 
             await new Promise(resolve => setTimeout(resolve, delay));

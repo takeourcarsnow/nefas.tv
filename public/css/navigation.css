@@ -11,17 +11,53 @@ nav {
     flex-grow: 0;
     position: relative;
     z-index: 99;
+    /* Mobile-friendly defaults */
+    width: 100%;
+    max-width: 100%;
+    overflow: visible;
 }
 
 nav a {
     cursor: pointer;
-    padding: 5px 10px;
+    padding: 10px;
     color: var(--main-color);
     border: 1px solid transparent;
+    /* Ensure proper display */
+    display: inline-block;
+    text-decoration: none;
+    /* Prevent text from disappearing */
+    min-height: 1.5em;
+    line-height: 1.4;
+    /* Better touch targets for mobile */
+    min-width: 44px; /* WCAG recommended minimum touch target */
+    text-align: center;
+    /* Fallback colors */
+    background-color: transparent;
+    /* Prevent invisible text */
+    opacity: 1;
+    visibility: visible;
 }
 
 nav a.active, nav a:hover {
-    background-color: var(--main-color);
-    color: var(--bg-color);
-    text-shadow: none;
+    background-color: var(--main-color) !important;
+    color: #000000 !important;
+    text-shadow: none !important;
+    border-color: var(--main-color);
+    /* Ensure text is visible on green background */
+    font-weight: bold !important;
+    /* Force text color to be dark and visible */
+    text-decoration: none !important;
+    /* Override any inherited colors */
+    background: var(--main-color) !important;
+}
+
+/* Higher specificity rules for #main-nav */
+#main-nav a.active, #main-nav a:hover {
+    background-color: var(--main-color) !important;
+    color: #000000 !important;
+    text-shadow: none !important;
+    border-color: var(--main-color) !important;
+    font-weight: bold !important;
+    text-decoration: none !important;
+    background: var(--main-color) !important;
 }

@@ -21,9 +21,46 @@
     gap: 1.5rem;
   }
   
+  /* Fixed navigation for mobile */
   nav {
-    font-size: 1.4rem;
-    gap: 1rem;
+    font-size: 1.2rem; /* Reduced from 1.4rem to prevent overflow */
+    gap: 0.8rem; /* Reduced gap */
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 20px;
+    /* Ensure visibility */
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative;
+    z-index: 1000;
+  }
+  
+  /* Ensure nav links are visible and properly sized */
+  nav a {
+    display: inline-block !important;
+    padding: 8px 12px;
+    min-width: auto;
+    white-space: nowrap;
+    font-size: inherit;
+    color: var(--main-color) !important;
+    border: 1px solid transparent;
+    background-color: transparent;
+    text-decoration: none;
+    /* Force visibility */
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  /* Active and hover states for mobile */
+  nav a.active,
+  nav a:hover {
+    background-color: var(--main-color) !important;
+    color: var(--bg-color) !important;
+    border-color: var(--main-color) !important;
+    font-weight: bold !important;
+    text-shadow: none !important;
   }
   
   h1 {
@@ -45,5 +82,40 @@
   
   .grid-item {
     padding: 1rem;
+  }
+  
+  /* Extra small screen navigation fixes */
+  nav {
+    font-size: 1.1rem !important; /* Even smaller for tiny screens */
+    gap: 0.5rem !important;
+    padding: 0 0.5rem;
+  }
+  
+  nav a {
+    padding: 6px 8px !important;
+    font-size: 0.9rem !important;
+    min-height: 32px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    /* Ensure consistent margins */
+    margin: 3px !important;
+  }
+  
+  .site-container {
+    padding: 0.5rem;
+  }
+}
+
+/* Additional fix for landscape orientation on mobile */
+@media (max-width: 800px) and (max-height: 500px) {
+  nav {
+    font-size: 1rem !important;
+    gap: 0.5rem !important;
+    margin-bottom: 15px;
+  }
+  
+  nav a {
+    padding: 4px 8px !important;
   }
 }

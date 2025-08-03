@@ -1,7 +1,7 @@
 import { mainContent, blogContent } from './modules/content.js';
 import { getTimestamp, createTypeWriter } from './modules/terminal.js';
 import { preloaderFrames, initPreloader } from './modules/preloader.js';
-import { initHeaderAnimation, initGlitchEffect } from './modules/header.js';
+import { initHeaderAnimation, initGlitchEffect, initScrollingText } from './modules/header.js';
 import { showSection, resetSection, resetAllSections } from './modules/section-manager.js';
 import { initBlogToggles } from './modules/blog.js';
 import { initImageModal } from './modules/modal.js';
@@ -107,6 +107,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (asciiHeader && asciiHeaderRight) {
             initHeaderAnimation(asciiHeader, asciiHeaderRight);
         }
+
+        // Initialize scrolling text LED effect
+        initScrollingText();
 
         // Initialize glitch effect on the main title
         const headerTitle = document.querySelector('header h1');
