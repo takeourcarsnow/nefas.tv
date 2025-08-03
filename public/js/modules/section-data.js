@@ -7,13 +7,13 @@ export const sectionContent = {
         { text: '=============================================', color: '#666', delay: 60 },
         { text: '', delay: 80 },
         { text: "WELCOME TO NEFAS.TV, ANON", color: '#ff00ff', delay: 60 },
-        { text: "├── /home/anon/bin/", color: '#00ffff', delay: 40 },
+        { text: "├── /home/nefas/bin/", color: '#00ffff', delay: 40 },
         { text: "│   ├── brain_dumps/", color: '#fff', delay: 35 },
         { text: "│   ├── spaghetti_code/", color: '#fff', delay: 35 },
         { text: "│   └── creative_autism/", color: '#fff', delay: 35 },
         { text: '', delay: 100 },
         { text: 'STATUS: comfier than a warm ThinkPad on your lap', color: '#00ff9d', delay: 70 },
-        { text: 'SKILLS: webm editing, pajeet-tier code, comfy posting', color: '#ffff00', delay: 45 },
+        { text: 'SKILLS: webm editing, lurking, comfy posting', color: '#ffff00', delay: 45 },
         { text: '', delay: 80 },
         { text: '> tfw when you make something that just werks™', color: '#ff00ff', delay: 50 },
         { text: '[INFO] Autism levels: MAXIMUM OVERDRIVE', color: '#00ff9d', delay: 60 },
@@ -33,7 +33,7 @@ export const sectionContent = {
         { text: '[INFO] Loading photography database', color: '#00ff9d', delay: 200 },
         { text: '[STATUS] Processing image data', color: '#ffff00', delay: 200 },
         { text: '=============================================', color: '#666', delay: 100 },
-        { text: 'pixels captured during my nocturnal wanderings.', color: '#ff00ff', delay: 50 },
+        { text: 'pixels captured during my urban wanderings.', color: '#ff00ff', delay: 50 },
         { text: "double-tap to boost my dopamine levels.", color: '#fff', delay: 50 },
         { text: '=============================================', color: '#666', delay: 100 }
     ],
@@ -44,7 +44,7 @@ export const sectionContent = {
         { text: '=============================================', color: '#666', delay: 100 },
         { text: 'polygons go brrrr. behold my geometric abominations.', color: '#ff00ff', delay: 50 },
         { text: "warning: may cause GPU fans to achieve lift-off.", color: '#fff', delay: 50 },
-        { text: 'interact to witness the majesty.', color: '#00ff9d', delay: 50 },
+        { text: 'interact to witness the magic.', color: '#00ff9d', delay: 50 },
         { text: '=============================================', color: '#666', delay: 100 }
     ],
     'webdev-content': [
