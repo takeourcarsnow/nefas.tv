@@ -11,7 +11,8 @@
     "lint": "npx eslint public/js/**/*.js",
     "lint:fix": "npx eslint public/js/**/*.js --fix",
     "validate": "npx html-validate public/index.html",
-    "generate": "node generate-content.cjs"
+    "generate": "node generate-content.cjs",
+    "playlist": "node generate-playlist.cjs"
   },
   "keywords": [
     "vaporwave",
