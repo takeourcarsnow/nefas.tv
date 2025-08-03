@@ -10,7 +10,8 @@
     "preview": "npx serve public -p 4173",
     "lint": "npx eslint public/js/**/*.js",
     "lint:fix": "npx eslint public/js/**/*.js --fix",
-    "validate": "npx html-validate public/index.html"
+    "validate": "npx html-validate public/index.html",
+    "generate": "node generate-content.cjs"
   },
   "keywords": [
     "vaporwave",
