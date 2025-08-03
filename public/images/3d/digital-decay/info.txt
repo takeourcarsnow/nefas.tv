@@ -1,4 +1,0 @@
-title: Digital Decay Chamber
-description: Architecture in the process of digital decomposition
-date: 2025-07-27
-tags: 3d, decay, architecture, glitch

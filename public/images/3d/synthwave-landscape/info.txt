@@ -1,4 +1,0 @@
-title: Synthwave Landscape
-description: Retro-futuristic terrain with grid horizons
-date: 2025-07-30
-tags: 3d, synthwave, landscape, retro
