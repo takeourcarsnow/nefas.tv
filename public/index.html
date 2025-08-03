@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nefas.tv</title>
+    
+    <!-- Favicon -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    
+    <!-- Preconnect to external domains for better performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.youtube.com">
+    <link rel="preconnect" href="https://www.instagram.com">
+    <!-- Load critical font with display swap for better performance -->
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <!-- Critical CSS loading -->
+    <link rel="stylesheet" href="/main.css">
+    <base href="/">
+    <!-- Preload critical JavaScript -->
+    <link rel="modulepreload" href="/js/main.js">
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//www.youtube.com">
+    <link rel="dns-prefetch" href="//www.instagram.com">
+    <!-- Module script with defer for better performance -->
+    <script type="module" src="/js/main.js" defer></script>
+</head>
+<body>
+
+    <div id="preloader"></div>
+
+    <!-- Background Effects -->
+    <div class="bg-grid"></div>
+    <div class="bg-particles"></div>
+    <div class="matrix-rain" id="matrix-rain"></div>
+    
+    <div class="scanlines"></div>
+
+    <div class="site-container">
+        <header>
+            <h1><span id="ascii-header"></span> nefas.tv <span id="ascii-header-right"></span></h1>
+            
+            <div class="scrolling-text-container">
+                <div class="scrolling-text">
+                    <span class="scroll-content">● MY CORNER OF THE DIGITAL VOID ● VISUALS, VIBES & VARIOUS EXPERIMENTS ● WATCH ● READ ● CLICK ●</span>
+                </div>
+            </div>
+            
+            <!-- MUSIC PLAYER -->
+            <div id="winamp">
+                <div class="winamp-controls">
+                    <button class="winamp-btn" id="play-btn">▶</button>
+                    <button class="winamp-btn" id="pause-btn">⏸</button>
+                    <button class="winamp-btn" id="stop-btn">⏹</button>
+                    <span id="winamp-time">00:00</span>
+                    <div class="winamp-visualizer" id="winamp-visualizer"></div>
+                </div>
+            </div>
+        </header>
+
+        <nav id="main-nav">
+            <a data-section="home-content" class="active">[ home ]</a>
+            <a data-section="video-content">[ video ]</a>
+            <a data-section="photo-content">[ photo ]</a>
+            <a data-section="d3-content">[ 3d ]</a>
+            <a data-section="webdev-content">[ webdev ]</a>
+            <a data-section="blog-content">[ blog ]</a>
+            <a data-section="misc-content">[ misc ]</a>
+        </nav>
+
+        <main id="content-area">
+
+            <!-- HOME SECTION -->
+            <div id="home-content" class="content-section">
+                <div id="terminal-output"></div>
+                
+                <!-- Latest Blogs Section -->
+                <h3 class="decrypt-text" style="margin-top: 40px; margin-bottom: 5px; visibility: hidden;" data-original-text="> latest blogs"></h3>
+                <p class="typewriter-text" style="margin-bottom: 20px; color: #00ff9d; visibility: hidden;" data-original-text="fresh thoughts for your brain"></p>
+                <div id="home-blogs-grid" class="grid-container"></div>
+                
+                <!-- Latest Videos Section -->
+                <h3 class="decrypt-text" style="margin-top: 40px; margin-bottom: 5px; visibility: hidden;" data-original-text="> latest videos"></h3>
+                <p class="typewriter-text" style="margin-bottom: 20px; color: #00ff9d; visibility: hidden;" data-original-text="moving pictures for your eyeballs"></p>
+                <div id="home-videos-grid" class="grid-container"></div>
+                
+                <!-- Latest Photos Section -->
+                <h3 class="decrypt-text" style="margin-top: 40px; margin-bottom: 5px; visibility: hidden;" data-original-text="> latest photos"></h3>
+                <p class="typewriter-text" style="margin-bottom: 20px; color: #00ff9d; visibility: hidden;" data-original-text="captured moments through my lens"></p>
+                <div id="home-photos-grid" class="grid-container"></div>
+                
+                <!-- Latest 3D Section -->
+                <h3 class="decrypt-text" style="margin-top: 40px; margin-bottom: 5px; visibility: hidden;" data-original-text="> latest 3d"></h3>
+                <p class="typewriter-text" style="margin-bottom: 20px; color: #00ff9d; visibility: hidden;" data-original-text="digital sculptures from the void"></p>
+                <div id="home-3d-grid" class="grid-container"></div>
+                
+                <!-- Latest Webdev Section -->
+                <h3 class="decrypt-text" style="margin-top: 40px; margin-bottom: 5px; visibility: hidden;" data-original-text="> latest webdev"></h3>
+                <p class="typewriter-text" style="margin-bottom: 20px; color: #00ff9d; visibility: hidden;" data-original-text="digital experiments and broken dreams"></p>
+                <div id="home-webdev-grid" class="grid-container"></div>
+            </div>
+
+            <!-- VIDEO SECTION -->
+            <div id="video-content" class="content-section">
+                <h2>> video feed</h2>
+                <p>a collection of moving pictures to rot your brain. i'll replace these with my own stuff eventually. probably.</p>
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <div class="video-embed">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <p class="video-caption">> HOW TO WASTE 10 HOURS IN AFTER EFFECTS</p>
+                    </div>
+                    <div class="grid-item">
+                        <div class="video-embed">
+                            <iframe src="https://www.youtube.com/embed/jfKfPfyJRdk" title="YouTube video player" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <p class="video-caption">> rare lofi hip hop mix to stare at code to</p>
+                    </div>
+                    <div class="grid-item">
+                         <div class="video-embed">
+                            <iframe src="https://www.youtube.com/embed/5qap5aO4i9A" title="YouTube video player" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <p class="video-caption">> datamoshing tutorial for the terminally online</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PHOTO SECTION -->
+            <div id="photo-content" class="content-section">
+                <h2>> photography</h2>
+                <p>i point my camera at things. mostly around the streets. these are placeholder photos until i replace them with my actual work.</p>
+                <div id="photo-gallery" class="grid-container">
+                    <!-- Photos will be loaded here by JavaScript -->
+                </div>
+            </div>
+
+            <!-- 3D SECTION -->
+            <div id="d3-content" class="content-section">
+                <h2>> 3D stuff</h2>
+                <p>some abstract pixel statues i cooked up in blender, c4d, and houdini. it's mostly shiny spheres and particle nonsense. click to expand</p>
+                <div id="d3-gallery" class="grid-container">
+                    <!-- 3D renders will be loaded dynamically -->
+                </div>
+            </div>
+            
+            <!-- WEBDEV SECTION -->
+            <div id="webdev-content" class="content-section">
+                <h2>> webdev projects</h2>
+                <p>i occasionally write code that gets deployed to the internet. no startup grind, no VC buzzwords — just late-night commits and whatever felt fun to build.</p>
+                <div class="grid-container">
+                    <div class="grid-item webdev-item">
+                        <img src="images/webdev/pasakai.jpg" alt="Pasakai.lt website screenshot showing story interface" loading="lazy" decoding="async" style="width:100%;height:100px;object-fit:cover;margin-bottom:8px;border-radius:6px;">
+                        <a href="http://pasakai.lt" target="_blank" rel="noopener noreferrer"><h3>> pasakai.lt</h3></a>
+                        <p>some storybook site. probably for kids. i don't remember.</p>
+                    </div>
+                    <div class="grid-item webdev-item">
+                        <img src="images/webdev/inhaiku.jpg" alt="InHaiku.lt website screenshot showing haiku generator" loading="lazy" decoding="async" style="width:100%;height:100px;object-fit:cover;margin-bottom:8px;border-radius:6px;">
+                        <a href="http://inhaiku.lt" target="_blank" rel="noopener noreferrer"><h3>> inhaiku.lt</h3></a>
+                        <p>generates haikus. the pinnacle of artificial intelligence.</p>
+                    </div>
+                    <div class="grid-item webdev-item">
+                        <img src="images/webdev/particles.jpg" alt="Particles.lt website screenshot showing particle effects" loading="lazy" decoding="async" style="width:100%;height:100px;object-fit:cover;margin-bottom:8px;border-radius:6px;">
+                        <a href="http://particles.lt" target="_blank" rel="noopener noreferrer"><h3>> particles.lt</h3></a>
+                        <p>more particle nonsense, but this time in a browser. runs at 5fps.</p>
+                    </div>
+                    <div class="grid-item webdev-item">
+                        <img src="images/webdev/drummachine.jpg" alt="DrumMachine.art website screenshot showing drum interface" loading="lazy" decoding="async" style="width:100%;height:100px;object-fit:cover;margin-bottom:8px;border-radius:6px;">
+                        <a href="http://drummachine.art" target="_blank" rel="noopener noreferrer"><h3>> drummachine.art</h3></a>
+                        <p>make sick beats in your browser. or just annoying noises.</p>
+                    </div>
+                    <div class="grid-item webdev-item">
+                        <img src="images/webdev/greentext.jpg" alt="Greentext.fun website screenshot showing greentext interface" loading="lazy" decoding="async" style="width:100%;height:100px;object-fit:cover;margin-bottom:8px;border-radius:6px;">
+                        <a href="http://greentext.fun" target="_blank" rel="noopener noreferrer"><h3>> greentext.fun</h3></a>
+                        <p>a shrine to the greatest literary format of our time.</p>
+                    </div>
+                    <div class="grid-item webdev-item">
+                        <img src="images/webdev/asciid.jpg" alt="AsciiD.art website screenshot showing ASCII art converter" loading="lazy" decoding="async" style="width:100%;height:100px;object-fit:cover;margin-bottom:8px;border-radius:6px;">
+                        <a href="http://asciid.art" target="_blank" rel="noopener noreferrer"><h3>> asciid.art</h3></a>
+                        <p>turn images into ascii art. because of course.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BLOG SECTION -->
+            <div id="blog-content" class="content-section">
+                <!-- Blog posts will be rendered here by blog.js -->
+            </div>
+
+            <!-- MISC SECTION -->
+            <div id="misc-content" class="content-section">
+                <h2>> misc</h2>
+                <p>a digital shoebox for things that don't fit anywhere else. links, files, random thoughts. check back once in a while.</p>
+                
+                <h3 style="margin-top: 40px; margin-bottom: 20px; color: var(--secondary-color);">>> interesting links</h3>
+                <div class="links-container">
+                    <div class="link-item">
+                        <a href="https://archive.org" target="_blank" rel="noopener noreferrer">
+                            <span class="link-title">[INTERNET ARCHIVE]</span>
+                            <span class="link-description">digital preservation of our collective memory</span>
+                        </a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://neal.fun" target="_blank" rel="noopener noreferrer">
+                            <span class="link-title">[NEAL.FUN]</span>
+                            <span class="link-description">interactive experiments that remind you the web can be fun</span>
+                        </a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://theuselessweb.com" target="_blank" rel="noopener noreferrer">
+                            <span class="link-title">[THE USELESS WEB]</span>
+                            <span class="link-description">random pointless websites, like the old days</span>
+                        </a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://old.reddit.com" target="_blank" rel="noopener noreferrer">
+                            <span class="link-title">[OLD REDDIT]</span>
+                            <span class="link-description">before they ruined everything with corporate UX</span>
+                        </a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://wiby.me" target="_blank" rel="noopener noreferrer">
+                            <span class="link-title">[WIBY]</span>
+                            <span class="link-description">search engine for the classic web</span>
+                        </a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://hacker-tools.github.io" target="_blank" rel="noopener noreferrer">
+                            <span class="link-title">[HACKER TOOLS]</span>
+                            <span class="link-description">MIT course on command line, vim, git, and other essentials</span>
+                        </a>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 40px; margin-bottom: 20px; color: var(--secondary-color);">>> random thoughts</h3>
+                <div class="misc-thoughts">
+                    <p>> the internet used to be a place you went to, not a place that followed you around</p>
+                    <p>> every website looking the same is not progress, it's conformity</p>
+                    <p>> css animations > javascript animations (fight me)</p>
+                    <p>> terminal emulators are the most honest interface we have</p>
+                    <p>> glitch art is just photography of digital decay</p>
+                    <p>> nostalgia is the only honest emotion in tech</p>
+                </div>
+
+                <h3 style="margin-top: 40px; margin-bottom: 20px; color: var(--secondary-color);">>> digital artifacts</h3>
+                <div class="artifacts-list">
+                    <div class="artifact-item">
+                        <span class="artifact-name">⊙ vaporwave.mp3</span>
+                        <span class="artifact-desc">background ambiance for late night coding</span>
+                    </div>
+                    <div class="artifact-item">
+                        <span class="artifact-name">⊙ matrix_rain.js</span>
+                        <span class="artifact-desc">because some clichés never get old</span>
+                    </div>
+                    <div class="artifact-item">
+                        <span class="artifact-name">⊙ todo.txt</span>
+                        <span class="artifact-desc">a growing list of things that will never happen</span>
+                    </div>
+                    <div class="artifact-item">
+                        <span class="artifact-name">⊙ old_bookmarks.html</span>
+                        <span class="artifact-desc">exported from firefox 3.6, most links are dead</span>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 40px; margin-bottom: 20px; color: var(--secondary-color);">>> status updates</h3>
+                <div class="status-log">
+                    <div class="status-item">
+                        <span class="status-time">[2025.08.03]</span>
+                        <span class="status-msg">listening to vaporwave, questioning life choices</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-time">[2025.08.01]</span>
+                        <span class="status-msg">rewrote the same component 5 times, still not satisfied</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-time">[2025.07.28]</span>
+                        <span class="status-msg">discovered a new css trick, immediately forgot it</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-time">[2025.07.25]</span>
+                        <span class="status-msg">website redesign #147 in progress</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-left">
+                    <span class="footer-timestamp" id="footer-timestamp"></span>
+                    <span class="footer-status">[ ONLINE ]</span>
+                </div>
+                <div class="footer-center">
+                    <span class="footer-copyright">© 2025 nefas.tv</span>
+                </div>
+                <div class="footer-right">
+                    <span class="footer-terminal">terminal_active.exe</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 3D IMAGE MODAL -->
+    <div id="image-modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <img id="modal-img" src="">
+            <div id="modal-caption"></div>
+        </div>
+    </div>
+    
+    <!-- !!! IMPORTANT: Replace this audio source with your own MP3 file !!! -->
+    <audio id="audio-player" src="audio/vaporwave.mp3"></audio>
+</body>
+</html> 

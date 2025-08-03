@@ -1,0 +1,44 @@
+[
+  {
+    "id": "neon-cube",
+    "title": "Neon Cube Matrix",
+    "description": "Floating geometric forms in digital space",
+    "image": "images/3d/neon-cube/1.jpg",
+    "thumbnail": "images/3d/neon-cube/1.jpg",
+    "date": "2025-08-01",
+    "tags": [
+      "3d",
+      "render",
+      "neon",
+      "geometric"
+    ]
+  },
+  {
+    "id": "synthwave-landscape",
+    "title": "Synthwave Landscape",
+    "description": "Retro-futuristic terrain with grid horizons",
+    "image": "images/3d/synthwave-landscape/1.jpg",
+    "thumbnail": "images/3d/synthwave-landscape/1.jpg",
+    "date": "2025-07-30",
+    "tags": [
+      "3d",
+      "synthwave",
+      "landscape",
+      "retro"
+    ]
+  },
+  {
+    "id": "digital-decay",
+    "title": "Digital Decay Chamber",
+    "description": "Architecture in the process of digital decomposition",
+    "image": "images/3d/digital-decay/1.jpg",
+    "thumbnail": "images/3d/digital-decay/1.jpg",
+    "date": "2025-07-27",
+    "tags": [
+      "3d",
+      "decay",
+      "architecture",
+      "glitch"
+    ]
+  }
+]
