@@ -47,7 +47,7 @@ export const sectionContent = {
     'home-content': [
         { text: '> sudo ./nefas.tv --verbose', color: '#00ff9d', delay: 80 },
         { text: '> Launching from tty3...', color: '#00ff9d', delay: 60 },
-        { text: '[✓] /comfy/ thread established', color: '#00ff00', delay: 50 },
+        { text: '[✓] IPv6 thread established', color: '#00ff00', delay: 50 },
         { text: '[⚠] normie.exe not located', color: '#ffaa00', delay: 40 },
         { text: '', delay: 25 },
         { text: "——— WELCOME TO NEFAS.TV, EXPLORER ———", color: '#ff00ff', delay: 25 },
