@@ -410,8 +410,10 @@ function showPhotoModal(photo, albumPhotos = null, startIndex = null) {
 
     // Touch events (mobile)
     let tapTimeout = null;
+    let dragReady = false;
     img.addEventListener('touchstart', (e) => {
         if (e.touches.length === 1) {
+            dragReady = false;
             if (tapTimeout) {
                 clearTimeout(tapTimeout);
                 tapTimeout = null;
@@ -431,19 +433,23 @@ function showPhotoModal(photo, albumPhotos = null, startIndex = null) {
             // Wait to see if a second tap comes in 350ms
             tapTimeout = setTimeout(() => {
                 tapTimeout = null;
-                // Single tap does nothing
+                // Single tap does nothing, but if zoomed in, allow drag to pan
+                if (zoom > 1 && dragReady) {
+                    isDragging = true;
+                    wasDragging = false;
+                    const touch = dragReady;
+                    startX = touch.clientX;
+                    startY = touch.clientY;
+                    lastPanX = panX;
+                    lastPanY = panY;
+                }
+                dragReady = false;
             }, 350);
-            // Only allow drag to pan if zoomed in
+            // Store touch for possible drag if no double-tap
             if (zoom > 1) {
-                isDragging = true;
-                wasDragging = false;
-                const touch = e.touches[0];
-                startX = touch.clientX;
-                startY = touch.clientY;
-                lastPanX = panX;
-                lastPanY = panY;
-                e.preventDefault();
+                dragReady = e.touches[0];
             }
+            e.preventDefault();
         } else if (e.touches.length === 2) {
             // Pinch start
             isDragging = false;
