@@ -76,15 +76,6 @@ export const sectionContent = {
         { text: 'and some personal experiments in digital masochism.', color: '#00ff9d', delay: 50 },
         { text: '=============================================', color: '#ff00ff', delay: 100 }
     ],
-    'blog-content': [
-        { text: '> Accessing thought database...', color: '#00ff9d', delay: 300 },
-        { text: '[WARNING] Unfiltered content detected', color: '#ff0000', delay: 200 },
-        { text: '[INFO] Loading brain dump sequence', color: '#00ff9d', delay: 200 },
-        { text: '=============================================', color: '#ff00ff', delay: 100 },
-        { text: 'unfiltered thoughts and long-form posting.', color: '#ff00ff', delay: 50 },
-        { text: 'click titles to expand/collapse.', color: '#fff', delay: 50 },
-        { text: '=============================================', color: '#ff00ff', delay: 100 }
-    ],
     'misc-content': [
         { text: '> Loading miscellaneous data...', color: '#00ff9d', delay: 300 },
         { text: '[INFO] Searching for random content', color: '#00ff9d', delay: 200 },
