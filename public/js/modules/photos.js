@@ -409,11 +409,13 @@ function showPhotoModal(photo, albumPhotos = null, startIndex = null) {
     });
 
     // Touch events (mobile)
+    let tapTimeout = null;
     img.addEventListener('touchstart', (e) => {
         if (e.touches.length === 1) {
-            const now = Date.now();
-            if (now - lastTap < 350) {
-                // Double tap: toggle zoom
+            if (tapTimeout) {
+                clearTimeout(tapTimeout);
+                tapTimeout = null;
+                // Double tap detected
                 if (zoom === 1) {
                     zoom = 2;
                 } else {
@@ -423,11 +425,14 @@ function showPhotoModal(photo, albumPhotos = null, startIndex = null) {
                 }
                 updateTransform();
                 updateControlsVisibility();
-                lastTap = 0;
                 e.preventDefault();
                 return;
             }
-            lastTap = now;
+            // Wait to see if a second tap comes in 350ms
+            tapTimeout = setTimeout(() => {
+                tapTimeout = null;
+                // Single tap does nothing
+            }, 350);
             // Only allow drag to pan if zoomed in
             if (zoom > 1) {
                 isDragging = true;
