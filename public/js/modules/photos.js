@@ -336,7 +336,6 @@ function showPhotoModal(photo, albumPhotos = null, startIndex = null) {
     modal.addEventListener('click', () => document.body.removeChild(modal));
     modalContent.querySelector('.close-photo-modal').addEventListener('click', () => document.body.removeChild(modal));
 
-    // Zoom by click/tap only
     const img = modalContent.querySelector('.modal-photo-img');
     // Zoom and pan logic
     let panX = 0, panY = 0, isDragging = false, startX = 0, startY = 0, lastPanX = 0, lastPanY = 0;
@@ -346,6 +345,12 @@ function showPhotoModal(photo, albumPhotos = null, startIndex = null) {
     }
     // Only toggle zoom on click if not dragging
     let wasDragging = false;
+    let lastTap = 0;
+    let pinchStartDist = null;
+    let pinchStartZoom = 1;
+    let pinchMidpoint = null;
+
+    // Mouse events (desktop)
     img.addEventListener('mousedown', (e) => {
         if (zoom === 1) return;
         isDragging = true;
@@ -402,51 +407,98 @@ function showPhotoModal(photo, albumPhotos = null, startIndex = null) {
         updateTransform();
         updateControlsVisibility();
     });
-    // Initial controls visibility
-    updateControlsVisibility();
-    // Mouse drag to pan
-    img.addEventListener('mousedown', (e) => {
-        if (zoom === 1) return;
-        isDragging = true;
-        startX = e.clientX;
-        startY = e.clientY;
-        lastPanX = panX;
-        lastPanY = panY;
-        img.style.cursor = 'grabbing';
-        e.preventDefault();
-    });
-    window.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        panX = lastPanX + (e.clientX - startX);
-        panY = lastPanY + (e.clientY - startY);
-        updateTransform();
-    });
-    window.addEventListener('mouseup', () => {
-        isDragging = false;
-        if (zoom > 1) img.style.cursor = 'grab';
-    });
-    // Touch drag for mobile
+
+    // Touch events (mobile)
     img.addEventListener('touchstart', (e) => {
-        if (zoom === 1) return;
-        isDragging = true;
-        const touch = e.touches[0];
-        startX = touch.clientX;
-        startY = touch.clientY;
-        lastPanX = panX;
-        lastPanY = panY;
-        e.preventDefault();
+        if (e.touches.length === 1) {
+            // Single finger: drag or double-tap
+            const now = Date.now();
+            if (now - lastTap < 350) {
+                // Double tap: toggle zoom
+                if (zoom === 1) {
+                    zoom = 2;
+                } else {
+                    zoom = 1;
+                    panX = 0;
+                    panY = 0;
+                }
+                updateTransform();
+                updateControlsVisibility();
+                lastTap = 0;
+                e.preventDefault();
+                return;
+            }
+            lastTap = now;
+            if (zoom === 1) return;
+            isDragging = true;
+            wasDragging = false;
+            const touch = e.touches[0];
+            startX = touch.clientX;
+            startY = touch.clientY;
+            lastPanX = panX;
+            lastPanY = panY;
+            e.preventDefault();
+        } else if (e.touches.length === 2) {
+            // Pinch start
+            isDragging = false;
+            const dx = e.touches[0].clientX - e.touches[1].clientX;
+            const dy = e.touches[0].clientY - e.touches[1].clientY;
+            pinchStartDist = Math.sqrt(dx * dx + dy * dy);
+            pinchStartZoom = zoom;
+            pinchMidpoint = {
+                x: (e.touches[0].clientX + e.touches[1].clientX) / 2,
+                y: (e.touches[0].clientY + e.touches[1].clientY) / 2
+            };
+        }
     }, { passive: false });
     window.addEventListener('touchmove', (e) => {
-        if (!isDragging || zoom === 1) return;
-        const touch = e.touches[0];
-        panX = lastPanX + (touch.clientX - startX);
-        panY = lastPanY + (touch.clientY - startY);
-        updateTransform();
+        if (e.touches && e.touches.length === 1 && isDragging && zoom > 1) {
+            const touch = e.touches[0];
+            panX = lastPanX + (touch.clientX - startX);
+            panY = lastPanY + (touch.clientY - startY);
+            updateTransform();
+        } else if (e.touches && e.touches.length === 2 && pinchStartDist) {
+            // Pinch to zoom
+            const dx = e.touches[0].clientX - e.touches[1].clientX;
+            const dy = e.touches[0].clientY - e.touches[1].clientY;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            let newZoom = pinchStartZoom * (dist / pinchStartDist);
+            newZoom = Math.max(1, Math.min(newZoom, 3));
+            zoom = newZoom;
+            if (zoom === 1) {
+                panX = 0;
+                panY = 0;
+            }
+            updateTransform();
+            updateControlsVisibility();
+        }
     }, { passive: false });
-    window.addEventListener('touchend', () => {
+    window.addEventListener('touchend', (e) => {
         isDragging = false;
+        pinchStartDist = null;
         if (zoom > 1) img.style.cursor = 'grab';
     });
+
+    // Swipe down to close when zoomed out (mobile)
+    let swipeStartY = null;
+    img.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1 && zoom === 1) {
+            swipeStartY = e.touches[0].clientY;
+        }
+    });
+    img.addEventListener('touchend', (e) => {
+        if (swipeStartY !== null && zoom === 1 && e.changedTouches.length === 1) {
+            const endY = e.changedTouches[0].clientY;
+            if (endY - swipeStartY > 80) {
+                // Swipe down detected
+                document.body.removeChild(modal);
+            }
+        }
+        swipeStartY = null;
+    });
+
+    // Initial controls visibility
+    updateControlsVisibility();
 
     // Navigation (if album context)
     if (photosArr && typeof currentIndex === 'number') {
