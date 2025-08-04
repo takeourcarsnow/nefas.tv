@@ -1,4 +1,4 @@
-import { mainContent, blogContent } from './modules/content.js';
+import { blogContent } from './modules/content.js';
 import { getTimestamp, createTypeWriter } from './modules/terminal.js';
 import { preloaderFrames, initPreloader } from './modules/preloader.js';
 import { initHeaderAnimation, initGlitchEffect, initScrollingText } from './modules/header.js';
