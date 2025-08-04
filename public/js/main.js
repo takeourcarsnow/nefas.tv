@@ -119,6 +119,16 @@ document.addEventListener('DOMContentLoaded', () => {
             initGlitchEffect(headerTitle);
         }
 
+        // Make home section jump headers clickable to switch tabs
+        document.querySelectorAll('.home-jump-tab').forEach(el => {
+            el.addEventListener('click', function() {
+                const section = el.getAttribute('data-jump-section');
+                if (section) {
+                    window.showSection(section);
+                }
+            });
+        });
+
         if (mainNav && contentSections.length > 0) {
             
             window.showSection = function(sectionId) {

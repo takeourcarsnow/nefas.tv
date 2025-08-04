@@ -177,12 +177,8 @@ function showAlbumModal(album) {
             <img src="${photo.image}" 
                  alt="${photo.title}"
                  style="width: 100%; height: 250px; object-fit: cover;">
-            <div style="padding: 15px;">
-                <h4 style="margin: 0 0 8px 0; color: #00ff9d;">${photo.title}</h4>
-                <p style="margin: 0; color: #ccc; font-size: 0.9em;">${photo.description}</p>
-            </div>
         `;
-        
+
         // Add hover effect
         photoElement.addEventListener('mouseenter', () => {
             photoElement.style.transform = 'scale(1.02)';
@@ -190,12 +186,18 @@ function showAlbumModal(album) {
         photoElement.addEventListener('mouseleave', () => {
             photoElement.style.transform = 'scale(1)';
         });
-        
-        // Add click to view larger
-        photoElement.addEventListener('click', () => {
+
+        // Add click to view larger (close album modal first)
+        photoElement.addEventListener('click', (e) => {
+            // Find and remove the album modal before opening photo modal
+            const albumModal = document.querySelector('.album-modal');
+            if (albumModal) {
+                document.body.removeChild(albumModal);
+            }
             showPhotoModal(photo);
+            e.stopPropagation();
         });
-        
+
         photoGrid.appendChild(photoElement);
     });
     
@@ -254,15 +256,27 @@ function showPhotoModal(photo) {
         text-align: center;
     `;
     
+    // Fallbacks for missing fields
+    const image = photo.image || photo.thumbnail || '';
+    const title = photo.title || '';
+    const description = photo.description || '';
+    let date = '';
+    try {
+        date = photo.date ? formatDate(photo.date) : '';
+    } catch (e) {
+        date = '';
+    }
+    const tags = Array.isArray(photo.tags) ? photo.tags.map(tag => `#${tag}`).join(' ') : '';
+
     modalContent.innerHTML = `
-        <img src="${photo.image}" 
-             alt="${photo.title}"
+        <img src="${image}" 
+             alt="${title}"
              style="max-width: 100%; max-height: 80vh; object-fit: contain; border-radius: 6px;">
         <div style="color: white; margin-top: 15px;">
-            <h3 style="margin: 0 0 5px 0; color: #00ff9d;">${photo.title}</h3>
-            <p style="margin: 0 0 10px 0; color: #ccc;">${photo.description}</p>
+            <h3 style="margin: 0 0 5px 0; color: #00ff9d;">${title}</h3>
+            <p style="margin: 0 0 10px 0; color: #ccc;">${description}</p>
             <div style="font-size: 0.9em; color: #666;">
-                ${formatDate(photo.date)} • ${photo.tags.map(tag => `#${tag}`).join(' ')}
+                ${date}${tags ? ' • ' + tags : ''}
             </div>
         </div>
     `;

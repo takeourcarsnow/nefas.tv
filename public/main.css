@@ -25,3 +25,10 @@
 @import './css/preloader.css';
 @import './css/responsive.css';
 @import './css/mobile-nav-fix.css';
+
+/* Ensure all images in the home section are always visible (override after all imports) */
+#home-content img {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}

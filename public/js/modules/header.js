@@ -10,14 +10,36 @@ export const initScrollingText = () => {
     if (!scrollingText) return;
     
     // Add subtle flicker effect to simulate LED display
-    setInterval(() => {
-        if (Math.random() < 0.05) { // 5% chance to flicker
+    let flickerInterval, brightnessInterval;
+    const flickerFn = () => {
+        if (document.hidden) return;
+        if (Math.random() < 0.05) {
             scrollingText.style.opacity = '0.7';
             setTimeout(() => {
                 scrollingText.style.opacity = '1';
             }, 50 + Math.random() * 100);
         }
-    }, 500);
+    };
+    const brightnessFn = () => {
+        if (document.hidden) return;
+        if (Math.random() < 0.1) {
+            scrollingText.style.textShadow = '0 0 8px var(--main-color), 0 0 15px var(--glow-color), 0 0 20px var(--glow-color)';
+            setTimeout(() => {
+                scrollingText.style.textShadow = '0 0 3px var(--main-color), 0 0 6px var(--glow-color), 0 0 9px var(--glow-color)';
+            }, 200 + Math.random() * 300);
+        }
+    };
+    flickerInterval = setInterval(flickerFn, 500);
+    brightnessInterval = setInterval(brightnessFn, 1000);
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            clearInterval(flickerInterval);
+            clearInterval(brightnessInterval);
+        } else {
+            flickerInterval = setInterval(flickerFn, 500);
+            brightnessInterval = setInterval(brightnessFn, 1000);
+        }
+    });
     
     // Occasionally change text brightness for LED effect
     setInterval(() => {
@@ -32,11 +54,21 @@ export const initScrollingText = () => {
 
 export const initHeaderAnimation = (asciiHeader, asciiHeaderRight) => {
     let headerFrameIndex = 0;
-    setInterval(() => {
+    let headerInterval;
+    const headerFn = () => {
+        if (document.hidden) return;
         if (asciiHeader) asciiHeader.textContent = leftFrames[headerFrameIndex];
         if (asciiHeaderRight) asciiHeaderRight.textContent = rightFrames[headerFrameIndex];
         headerFrameIndex = (headerFrameIndex + 1) % leftFrames.length;
-    }, 800);
+    };
+    headerInterval = setInterval(headerFn, 800);
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            clearInterval(headerInterval);
+        } else {
+            headerInterval = setInterval(headerFn, 800);
+        }
+    });
 };
 
 export const initGlitchEffect = (titleElement) => {
@@ -46,41 +78,34 @@ export const initGlitchEffect = (titleElement) => {
     const asciiHeader = titleElement.querySelector('#ascii-header');
     const asciiHeaderRight = titleElement.querySelector('#ascii-header-right');
     
-    setInterval(() => {
+    let glitchInterval;
+    const glitchFn = () => {
+        if (document.hidden) return;
         // Glitch much more often (70% chance)
         if (Math.random() < 0.7) {
             const textArray = originalText.split('');
             const numCharsToGlitch = Math.floor(Math.random() * 4) + 2; // 2-5 characters
-            
             // Select random positions to glitch
             for (let i = 0; i < numCharsToGlitch; i++) {
                 const randomIndex = Math.floor(Math.random() * textArray.length);
                 textArray[randomIndex] = glitchChars[Math.floor(Math.random() * glitchChars.length)];
             }
             
-            // Apply glitched text while preserving the ASCII brackets
-            const glitchedText = textArray.join('');
-            // Create a temporary text node to replace just the site name
-            const textNodes = titleElement.childNodes;
-            for (let node of textNodes) {
-                if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
-                    node.textContent = ` ${glitchedText} `;
-                    break;
-                }
-            }
-            titleElement.classList.add('glitching');
-            
-            // Restore original text after a short time
-            setTimeout(() => {
-                // Restore original text while keeping ASCII brackets
-                for (let node of titleElement.childNodes) {
-                    if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
-                        node.textContent = ` ${originalText} `;
-                        break;
-                    }
-                }
-                titleElement.classList.remove('glitching');
-            }, 200 + Math.random() * 300); // 200-500ms glitch duration (longer)
+            titleElement.textContent = textArray.join('');
+            // Restore ASCII headers
+            if (asciiHeader) asciiHeader.textContent = leftFrames[0];
+            if (asciiHeaderRight) asciiHeaderRight.textContent = rightFrames[0];
+        } else {
+            // Restore original text
+            titleElement.textContent = originalText;
         }
-    }, 800 + Math.random() * 1200); // Random interval between 0.8-2 seconds (much more frequent)
+    };
+    glitchInterval = setInterval(glitchFn, 200);
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            clearInterval(glitchInterval);
+        } else {
+            glitchInterval = setInterval(glitchFn, 200);
+        }
+    });
 };

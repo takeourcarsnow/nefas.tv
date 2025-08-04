@@ -51,15 +51,31 @@ class BackgroundEffects {
 
     startAmbientEffects() {
         // Subtle random CRT flicker effect
-        setInterval(() => {
+        this.crtFlickerInterval = null;
+        const flickerFn = () => {
+            if (document.hidden) return;
             const crtOverlay = document.querySelector('.crt-glow-overlay');
-            if (crtOverlay && Math.random() < 0.05) { // 5% chance every interval
+            if (crtOverlay && Math.random() < 0.05) {
                 crtOverlay.style.animation = 'crt-flicker 0.1s ease-in-out';
                 setTimeout(() => {
                     crtOverlay.style.animation = 'crt-glow 4s ease-in-out infinite alternate';
                 }, 100);
             }
-        }, 3000); // Check every 3 seconds
+        };
+        this.crtFlickerInterval = setInterval(flickerFn, 200);
+        // Pause/resume on tab visibility
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                if (this.crtFlickerInterval) {
+                    clearInterval(this.crtFlickerInterval);
+                    this.crtFlickerInterval = null;
+                }
+            } else {
+                if (!this.crtFlickerInterval) {
+                    this.crtFlickerInterval = setInterval(flickerFn, 200);
+                }
+            }
+        });
     }
 
     // Adjust effects on window resize

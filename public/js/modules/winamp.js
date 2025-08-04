@@ -1,4 +1,24 @@
 export const initWinampPlayer = async () => {
+    // Pause/resume visualizer on tab visibility
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+                animationFrameId = null;
+            }
+        } else {
+            if (isPlaying) {
+                updateVisualizer();
+            }
+        }
+    });
+
+    // Helper to check if visualizer is visible (not display:none or hidden)
+    function isVisualizerVisible() {
+        if (!visualizer) return false;
+        const style = window.getComputedStyle(visualizer);
+        return style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0';
+    }
     const winamp = document.getElementById('winamp');
     const audio = document.getElementById('audio-player');
     const playBtn = document.getElementById('play-btn');
@@ -100,15 +120,24 @@ export const initWinampPlayer = async () => {
     }
     visualizer.appendChild(fragment);
 
-    // Optimized visualizer update with requestAnimationFrame
-    const updateVisualizer = () => {
-        if (!isPlaying) return;
-        
-        // Batch DOM updates for better performance
-        visBars.forEach(bar => {
-            bar.style.height = `${Math.random() * 100}%`;
-        });
-        
+    // Optimized visualizer update with requestAnimationFrame, throttled to 30fps
+    let lastVisUpdate = 0;
+    const VIS_FPS = 30;
+    const updateVisualizer = (now) => {
+        if (!isPlaying || !isVisualizerVisible()) {
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+                animationFrameId = null;
+            }
+            return;
+        }
+        now = now || performance.now();
+        if (now - lastVisUpdate > 1000 / VIS_FPS) {
+            visBars.forEach(bar => {
+                bar.style.height = `${Math.random() * 100}%`;
+            });
+            lastVisUpdate = now;
+        }
         animationFrameId = requestAnimationFrame(updateVisualizer);
     };
 
@@ -135,6 +164,7 @@ export const initWinampPlayer = async () => {
         isPlaying = false;
         if (animationFrameId) {
             cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
         }
     });
     
@@ -144,6 +174,7 @@ export const initWinampPlayer = async () => {
         isPlaying = false;
         if (animationFrameId) {
             cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
         }
         // Reset visualizer bars
         visBars.forEach(bar => {
@@ -178,6 +209,7 @@ export const initWinampPlayer = async () => {
         isPlaying = false;
         if (animationFrameId) {
             cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
         }
     });
 
@@ -185,6 +217,7 @@ export const initWinampPlayer = async () => {
     audio.addEventListener('ended', () => {
         if (animationFrameId) {
             cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
         }
         // Set isPlaying to true so nextTrack will auto-play
         isPlaying = true;
