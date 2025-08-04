@@ -71,26 +71,33 @@ export const initHeaderAnimation = (asciiHeader, asciiHeaderRight) => {
     });
 };
 
+
 export const initGlitchEffect = (titleElement) => {
     if (!titleElement) return;
-    
+
     // Store references to the ASCII elements so we don't lose them
     const asciiHeader = titleElement.querySelector('#ascii-header');
     const asciiHeaderRight = titleElement.querySelector('#ascii-header-right');
-    
-    let glitchInterval;
-    const glitchFn = () => {
-        if (document.hidden) return;
-        // Glitch much more often (70% chance)
-        if (Math.random() < 0.7) {
+
+    let glitchTimeout;
+    let running = true;
+
+    function glitchFn() {
+        if (!running || document.hidden) return;
+
+        // 50% chance to glitch, 50% to show original
+        if (Math.random() < 0.5) {
             const textArray = originalText.split('');
-            const numCharsToGlitch = Math.floor(Math.random() * 4) + 2; // 2-5 characters
-            // Select random positions to glitch
-            for (let i = 0; i < numCharsToGlitch; i++) {
-                const randomIndex = Math.floor(Math.random() * textArray.length);
-                textArray[randomIndex] = glitchChars[Math.floor(Math.random() * glitchChars.length)];
+            // Randomize number of chars to glitch: 1 to 4
+            const numCharsToGlitch = 1 + Math.floor(Math.random() * 4);
+            // Use a Set to avoid glitching the same char twice
+            const indices = new Set();
+            while (indices.size < numCharsToGlitch) {
+                indices.add(Math.floor(Math.random() * textArray.length));
             }
-            
+            indices.forEach(idx => {
+                textArray[idx] = glitchChars[Math.floor(Math.random() * glitchChars.length)];
+            });
             titleElement.textContent = textArray.join('');
             // Restore ASCII headers
             if (asciiHeader) asciiHeader.textContent = leftFrames[0];
@@ -99,13 +106,23 @@ export const initGlitchEffect = (titleElement) => {
             // Restore original text
             titleElement.textContent = originalText;
         }
-    };
-    glitchInterval = setInterval(glitchFn, 200);
+
+        // Next glitch after a random delay (600–1200ms)
+        const nextDelay = 600 + Math.random() * 600;
+        glitchTimeout = setTimeout(glitchFn, nextDelay);
+    }
+
+    glitchFn();
+
     document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
-            clearInterval(glitchInterval);
+            running = false;
+            clearTimeout(glitchTimeout);
         } else {
-            glitchInterval = setInterval(glitchFn, 200);
+            if (!running) {
+                running = true;
+                glitchFn();
+            }
         }
     });
 };
