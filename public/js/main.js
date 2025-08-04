@@ -10,6 +10,7 @@ import { initHomePosts } from './modules/home.js';
 import { initFooter } from './modules/footer.js';
 import { initPhotos } from './modules/photos.js';
 import { init3D } from './modules/3d.js';
+import { initMiscAccordion } from './modules/misc-accordion.js';
 import BackgroundEffects from './modules/background-effects.js';
 
 // Cache DOM elements for better performance
@@ -128,6 +129,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
+        // Make 'nefas.tv' in header clickable to go to home tab
+        const homeHeaderJump = document.getElementById('home-header-jump');
+        if (homeHeaderJump) {
+            homeHeaderJump.addEventListener('click', function() {
+                window.showSection('home-content');
+            });
+        }
 
         if (mainNav && contentSections.length > 0) {
             
@@ -175,12 +183,12 @@ document.addEventListener('DOMContentLoaded', () => {
         initImageModal();
         initWinampPlayer();
         initFooter();
-        
+        initMiscAccordion();
+
         // Handle window resize for background effects
         window.addEventListener('resize', () => {
             backgroundEffects.handleResize();
         });
-        
     } catch (error) {
         console.error('Error initializing application:', error);
     }

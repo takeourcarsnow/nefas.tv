@@ -28,26 +28,10 @@ class BackgroundEffects {
         scanLines.className = 'crt-scan-lines';
         this.backgroundContainer.appendChild(scanLines);
 
-        // Add ambient particles
-        this.createAmbientParticles();
+        // ...ambient particles code removed...
     }
 
-    createAmbientParticles() {
-        const particleCount = 8; // Keep it subtle
-        
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'ambient-particle';
-            
-            // Random positioning
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.top = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 10 + 's';
-            particle.style.animationDuration = (15 + Math.random() * 20) + 's';
-            
-            this.backgroundContainer.appendChild(particle);
-        }
-    }
+    // ...ambient particles method removed...
 
     startAmbientEffects() {
         // Subtle random CRT flicker effect
