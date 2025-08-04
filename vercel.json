@@ -1,5 +1,4 @@
 {
   "version": 2,
-  "buildCommand": "npm run playlist && npm run generate",
-  "outputDirectory": "public"
+  "buildCommand": "npm run playlist && npm run generate"
 }
