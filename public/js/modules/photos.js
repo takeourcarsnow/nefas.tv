@@ -411,7 +411,7 @@ function showPhotoModal(photo, albumPhotos = null, startIndex = null) {
     // Touch events (mobile)
     img.addEventListener('touchstart', (e) => {
         if (e.touches.length === 1) {
-            // Single finger: drag or double-tap
+            // Only handle double-tap for zoom toggle, single tap does nothing
             const now = Date.now();
             if (now - lastTap < 350) {
                 // Double tap: toggle zoom
@@ -429,15 +429,7 @@ function showPhotoModal(photo, albumPhotos = null, startIndex = null) {
                 return;
             }
             lastTap = now;
-            if (zoom === 1) return;
-            isDragging = true;
-            wasDragging = false;
-            const touch = e.touches[0];
-            startX = touch.clientX;
-            startY = touch.clientY;
-            lastPanX = panX;
-            lastPanY = panY;
-            e.preventDefault();
+            // Do not start drag on single tap, only on double tap or pinch
         } else if (e.touches.length === 2) {
             // Pinch start
             isDragging = false;
