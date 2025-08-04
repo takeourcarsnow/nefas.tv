@@ -1,30 +1,3 @@
-export const mainContent = [
-    { text: '> Initializing nefas.tv daemon...', color: '#00ff9d', delay: 180 },
-    { text: '> Checking neural network integrity...', color: '#00ff9d', delay: 220 },
-    { text: '> Calibrating creative chaos algorithms...', color: '#00ff9d', delay: 160 },
-    { text: '[SUCCESS] Hyperstition protocols active', color: '#00ff00', delay: 120 },
-    { text: '[INFO] Loading digital persona matrix...', color: '#00ff9d', delay: 140 },
-    { text: '[WARN] Reality.exe may be corrupted', color: '#ffaa00', delay: 100 },
-    { text: '=============================================', color: '#ff00ff', delay: 60 },
-    { text: '', delay: 80 },
-    { text: "WELCOME TO THE NEFAS.TV MAINFRAME", color: '#ff00ff', delay: 60 },
-    { text: "├── digital_containment_zone/", color: '#00ffff', delay: 40 },
-    { text: "│   ├── brain_dumps/", color: '#fff', delay: 35 },
-    { text: "│   ├── project_archives/", color: '#fff', delay: 35 },
-    { text: "│   └── creative_chaos/", color: '#fff', delay: 35 },
-    { text: '', delay: 120 },
-    { text: 'STATUS: Perpetually caffeinated creator online', color: '#00ff9d', delay: 70 },
-    { text: 'SPECIALTIES: Videos • Photos • Code (occasionally functional)', color: '#ffff00', delay: 45 },
-    { text: 'PHILOSOPHY: Embrace the glorious mess of creation', color: '#ff00ff', delay: 45 },
-    { text: '', delay: 100 },
-    { text: '> Aesthetic overload is not a bug, it\'s a feature', color: '#00ff9d', delay: 60 },
-    { text: '> This digital space thrives on beautiful chaos', color: '#00ff9d', delay: 50 },
-    { text: '> Navigate freely, anon. The journey > destination', color: '#ff00ff', delay: 40 },
-    { text: '', delay: 80 },
-    { text: '[INFO] All systems nominal. Creativity levels: MAXIMUM', color: '#00ff00', delay: 80 },
-    { text: '[INFO] Reality distortion field: ACTIVE', color: '#ff00ff', delay: 60 },
-    { text: '=============================================', color: '#ff00ff', delay: 50 }
-];
 
 export const blogContent = [
     { text: '> Accessing blog database...', color: '#00ff9d', delay: 150 },
@@ -93,7 +66,7 @@ export const sectionContent = {
         { text: '=============================================', color: '#ff00ff', delay: 100 }
     ],
     'webdev-content': [
-        { text: '> npm install depression', color: '#00ff9d', delay: 300 },
+        { text: '> npm install projects', color: '#00ff9d', delay: 300 },
         { text: '[INFO] Installing 69,420 dependencies...', color: '#ffff00', delay: 200 },
         { text: '[WARNING] Memory leak detected', color: '#ff0000', delay: 200 },
         { text: '[STATUS] Bundle size: TOO_DAMN_BIG', color: '#ff0000', delay: 200 },
