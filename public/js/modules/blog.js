@@ -53,13 +53,13 @@ export const initBlogToggles = (callback = null, targetContainer = null) => {
                         <span class="blog-tags">${tags}</span>
                         <span class="blog-toggle">${isExpanded ? '[ ...read less ]' : '[ read more... ]'}</span>
                     </div>
-                    <div class="blog-full-content" style="display:${isExpanded ? 'block' : 'none'};">
+                    <div class="blog-full-content${isExpanded ? ' expanded' : ''}">
                         ${post.content.map(p => `<p>${p}</p>`).join('')}
                     </div>
                 </div>
                 `;
             }).join('');
-            
+
             // Check if blog container already has terminal content
             const existingTerminal = blogContainer.querySelector('#blog-terminal-output');
             if (existingTerminal) {
@@ -70,15 +70,15 @@ export const initBlogToggles = (callback = null, targetContainer = null) => {
                 blogContainer.appendChild(postsDiv);
             } else {
                 // If this is a fresh container or sub-container, add the header
-                const content = targetContainer ? 
-                    snippets : 
+                const content = targetContainer ?
+                    snippets :
                     `<h2>> the blog</h2>
                     <p>unfiltered thoughts and long-form posting. click titles to expand/collapse.</p>
                     ${snippets}`;
-                    
+
                 blogContainer.innerHTML = content;
             }
-                
+
             console.log('Setting content in container:', blogContainer, 'Posts count:', posts.length);
 
             // Add toggles
@@ -87,17 +87,21 @@ export const initBlogToggles = (callback = null, targetContainer = null) => {
                     const fullContent = header.nextElementSibling;
                     const toggleText = header.querySelector('.blog-toggle');
                     const postTitle = header.querySelector('h3').textContent.slice(2); // Remove "> " prefix
-                    const isVisible = fullContent.style.display === 'block';
-                    
-                    // Update display
-                    fullContent.style.display = isVisible ? 'none' : 'block';
-                    toggleText.textContent = isVisible ? '[ read more... ]' : '[ ...read less ]';
-                    
-                    // Update stored state
-                    if (isVisible) {
-                        expandedPosts.delete(postTitle);
-                    } else {
+                    const isExpanded = fullContent.classList.contains('expanded');
+
+                    // Force reflow for transition (fixes some browsers)
+                    if (!isExpanded) {
+                        // Remove then add for restart if needed
+                        fullContent.classList.remove('expanded');
+                        // eslint-disable-next-line no-unused-expressions
+                        void fullContent.offsetWidth;
+                        fullContent.classList.add('expanded');
+                        toggleText.textContent = '[ ...read less ]';
                         expandedPosts.add(postTitle);
+                    } else {
+                        fullContent.classList.remove('expanded');
+                        toggleText.textContent = '[ read more... ]';
+                        expandedPosts.delete(postTitle);
                     }
                     sessionStorage.setItem('expandedPosts', JSON.stringify([...expandedPosts]));
                 });
@@ -111,7 +115,7 @@ export const initBlogToggles = (callback = null, targetContainer = null) => {
         .catch(error => {
             console.error('Error loading blog posts:', error);
             const errorMessage = `<p style="color: #ff0000;">Error loading blog posts: ${error.message}</p>`;
-            
+
             // Check if blog container already has terminal content
             const existingTerminal = blogContainer.querySelector('#blog-terminal-output');
             if (existingTerminal) {
@@ -122,7 +126,7 @@ export const initBlogToggles = (callback = null, targetContainer = null) => {
             } else {
                 blogContainer.innerHTML = errorMessage;
             }
-            
+
             if (callback) {
                 callback();
             }
