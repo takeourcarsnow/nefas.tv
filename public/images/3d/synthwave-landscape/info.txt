@@ -1,4 +1,4 @@
-title: Synthwave Landscape
-description: Retro-futuristic terrain with grid horizons
+title: tasty splines
+description: soft body + splines = fun
 date: 2025-07-30
-tags: 3d, synthwave, landscape, retro
+tags: 3d, c4d, render, abstract
