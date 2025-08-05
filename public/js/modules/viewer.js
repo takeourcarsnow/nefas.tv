@@ -330,16 +330,20 @@ export function showViewerModal(item, itemsArr = null, startIndex = null) {
             const newIdx = ((idx % len) + len) % len;
             showViewerModal(arr[newIdx], arr, newIdx);
         };
-        // Next/Prev buttons
-        modalContent.querySelector('.next-photo').addEventListener('click', (e) => {
-            e.stopPropagation();
-            showAt(currentIndex + 1);
-        });
-        modalContent.querySelector('.prev-photo').addEventListener('click', (e) => {
-            e.stopPropagation();
-            showAt(currentIndex - 1);
-        });
-        // Keyboard navigation
+        // Next/Prev buttons (desktop)
+        const nextBtn = modalContent.querySelector('.next-photo');
+        const prevBtn = modalContent.querySelector('.prev-photo');
+        if (nextBtn && prevBtn) {
+            nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                showAt(currentIndex + 1);
+            });
+            prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                showAt(currentIndex - 1);
+            });
+        }
+        // Keyboard navigation (desktop)
         const handleKey = (e) => {
             if (e.key === 'ArrowRight') {
                 showAt(currentIndex + 1);
@@ -351,6 +355,43 @@ export function showViewerModal(item, itemsArr = null, startIndex = null) {
             }
         };
         document.addEventListener('keydown', handleKey);
+
+        // Swipe navigation (mobile, when no arrows)
+        let touchStartX = null;
+        let touchStartY = null;
+        let touchEndX = null;
+        let touchEndY = null;
+        let swipeHandled = false;
+        img.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 1 && (!nextBtn || !prevBtn)) {
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+                swipeHandled = false;
+            }
+        });
+        img.addEventListener('touchmove', (e) => {
+            if (e.touches.length === 1 && touchStartX !== null && (!nextBtn || !prevBtn)) {
+                touchEndX = e.touches[0].clientX;
+                touchEndY = e.touches[0].clientY;
+            }
+        });
+        img.addEventListener('touchend', (e) => {
+            if (touchStartX !== null && touchEndX !== null && !swipeHandled && (!nextBtn || !prevBtn)) {
+                const dx = touchEndX - touchStartX;
+                const dy = touchEndY - touchStartY;
+                if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) {
+                    swipeHandled = true;
+                    if (dx < 0) {
+                        // Swipe left: next
+                        showAt(currentIndex + 1);
+                    } else {
+                        // Swipe right: prev
+                        showAt(currentIndex - 1);
+                    }
+                }
+            }
+            touchStartX = touchStartY = touchEndX = touchEndY = null;
+        });
     } else {
         // Escape key for single item
         const handleEscape = (e) => {
