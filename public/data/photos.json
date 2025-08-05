@@ -3,7 +3,7 @@
     "type": "album",
     "id": "plants & macro",
     "title": "Plants & Macro",
-    "description": "up close and personal",
+    "description": "getting real close to the tiny things",
     "coverImage": "images/photos/plants & macro/1.jpg",
     "date": "2025-08-03",
     "tags": [
@@ -39,7 +39,7 @@
     "type": "album",
     "id": "animals",
     "title": "Animals",
-    "description": "mostly cats",
+    "description": "all the furry friends I meet",
     "coverImage": "images/photos/animals/10x7,14cm (7).jpg",
     "date": "2025-08-01",
     "tags": [
@@ -68,7 +68,7 @@
     "type": "album",
     "id": "events",
     "title": "Events",
-    "description": "Capturing local gigs",
+    "description": "local shows & local vibes",
     "coverImage": "images/photos/events/1.jpg",
     "date": "2025-08-01",
     "tags": [
@@ -104,7 +104,7 @@
     "type": "album",
     "id": "panoramic",
     "title": "Panoramic",
-    "description": "shots that are wiiiide",
+    "description": "big shots of wide open spaces",
     "coverImage": "images/photos/panoramic/1.jpg",
     "date": "2025-08-01",
     "tags": [
@@ -140,7 +140,7 @@
     "type": "album",
     "id": "portraits",
     "title": "Portraits",
-    "description": "people around me",
+    "description": "beautiful humans being themselves",
     "coverImage": "images/photos/portraits/1.jpg",
     "date": "2025-08-01",
     "tags": [
