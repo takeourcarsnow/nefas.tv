@@ -356,41 +356,40 @@ export function showViewerModal(item, itemsArr = null, startIndex = null) {
         };
         document.addEventListener('keydown', handleKey);
 
-        // Swipe navigation (mobile, when no arrows)
-        let touchStartX = null;
-        let touchStartY = null;
-        let touchEndX = null;
-        let touchEndY = null;
-        let swipeHandled = false;
+        // Swipe navigation (mobile/touch devices, always enabled if zoomed out)
+        const isMobile = 'ontouchstart' in window && window.innerWidth <= 900;
+        let swipeX = null, swipeY = null, swipeMoved = false;
         img.addEventListener('touchstart', (e) => {
-            if (e.touches.length === 1 && (!nextBtn || !prevBtn)) {
-                touchStartX = e.touches[0].clientX;
-                touchStartY = e.touches[0].clientY;
-                swipeHandled = false;
-            }
+            if (!isMobile || zoom !== 1 || e.touches.length !== 1) return;
+            swipeX = e.touches[0].clientX;
+            swipeY = e.touches[0].clientY;
+            swipeMoved = false;
         });
         img.addEventListener('touchmove', (e) => {
-            if (e.touches.length === 1 && touchStartX !== null && (!nextBtn || !prevBtn)) {
-                touchEndX = e.touches[0].clientX;
-                touchEndY = e.touches[0].clientY;
+            if (!isMobile || zoom !== 1 || swipeX === null || swipeY === null) return;
+            if (e.touches.length !== 1) return;
+            const dx = e.touches[0].clientX - swipeX;
+            const dy = e.touches[0].clientY - swipeY;
+            if (!swipeMoved && (Math.abs(dx) > 10 || Math.abs(dy) > 10)) {
+                swipeMoved = true;
             }
         });
         img.addEventListener('touchend', (e) => {
-            if (touchStartX !== null && touchEndX !== null && !swipeHandled && (!nextBtn || !prevBtn)) {
-                const dx = touchEndX - touchStartX;
-                const dy = touchEndY - touchStartY;
-                if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) {
-                    swipeHandled = true;
-                    if (dx < 0) {
-                        // Swipe left: next
-                        showAt(currentIndex + 1);
-                    } else {
-                        // Swipe right: prev
-                        showAt(currentIndex - 1);
-                    }
+            if (!isMobile || zoom !== 1 || swipeX === null || swipeY === null) return;
+            if (!swipeMoved) { swipeX = swipeY = null; return; }
+            const touch = (e.changedTouches && e.changedTouches[0]) || null;
+            if (!touch) { swipeX = swipeY = null; return; }
+            const dx = touch.clientX - swipeX;
+            const dy = touch.clientY - swipeY;
+            // Only trigger if horizontal swipe and not a vertical swipe (to not conflict with swipe down to close)
+            if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) {
+                if (dx < 0) {
+                    showAt(currentIndex + 1);
+                } else {
+                    showAt(currentIndex - 1);
                 }
             }
-            touchStartX = touchStartY = touchEndX = touchEndY = null;
+            swipeX = swipeY = null;
         });
     } else {
         // Escape key for single item
