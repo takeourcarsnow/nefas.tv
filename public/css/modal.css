@@ -1,3 +1,23 @@
+.album-modal .close-modal {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: var(--main-color);
+    font-size: 24px;
+    font-weight: 400;
+    font-family: inherit;
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+    transition: color 0.2s;
+    line-height: 1;
+    letter-spacing: 0;
+    z-index: 10;
+}
+.album-modal .close-modal:hover {
+    color: #fff;
+}
 /* --- [ MODAL (for 3D images) ] --- */
 #image-modal {
     position: fixed;
@@ -34,16 +54,24 @@
     font-size: 1.2em;
 }
 
+
 .close-modal {
     position: absolute;
     top: -40px;
     right: 0px;
-    color: #fff;
-    font-size: 35px;
-    font-weight: bold;
+    color: var(--main-color);
+    font-size: 32px;
+    font-weight: 400;
+    font-family: inherit;
     cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+    transition: color 0.2s;
+    line-height: 1;
+    letter-spacing: 0;
 }
 
-.close-modal:hover { 
-    color: var(--secondary-color); 
+.close-modal:hover {
+    color: #fff;
 }

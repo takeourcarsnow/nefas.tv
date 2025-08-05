@@ -173,7 +173,7 @@ function showAlbumModal(album) {
         <div style="color: #666; font-size: 0.9em;">
             ${formatDate(album.date)} • ${album.photos.length} photos • ${album.tags.map(tag => `#${tag}`).join(' ')}
         </div>
-        <button id="close-album" style="position: absolute; top: 20px; right: 30px; background: none; border: 1px solid #666; color: white; padding: 8px 16px; cursor: pointer; border-radius: 4px; font-size: 1.2em;">✕ Close</button>
+        <span class="close-modal" id="close-album">&#10005;</span>
     `;
     
     // Photo grid
