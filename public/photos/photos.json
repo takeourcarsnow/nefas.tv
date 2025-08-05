@@ -1,0 +1,106 @@
+[
+  {
+    "type": "album",
+    "id": "album3",
+    "title": "Upload Test",
+    "description": "qqqqqqqqqqqqq",
+    "coverImage": "images/photos/album3/1.jpg",
+    "date": "2025-08-03",
+    "tags": [
+      "photography",
+      "macro",
+      "makro",
+      "nefas"
+    ],
+    "photos": [
+      {
+        "id": "album3_1",
+        "title": "Upload Test #1",
+        "description": "Photo 1 from Upload Test",
+        "image": "images/photos/album3/1.jpg",
+        "thumbnail": "images/photos/album3/1.jpg"
+      },
+      {
+        "id": "album3_2",
+        "title": "Upload Test #2",
+        "description": "Photo 2 from Upload Test",
+        "image": "images/photos/album3/2.jpg",
+        "thumbnail": "images/photos/album3/2.jpg"
+      },
+      {
+        "id": "album3_3",
+        "title": "Upload Test #3",
+        "description": "Photo 3 from Upload Test",
+        "image": "images/photos/album3/3.jpg",
+        "thumbnail": "images/photos/album3/3.jpg"
+      }
+    ]
+  },
+  {
+    "type": "album",
+    "id": "album1",
+    "title": "Urban Explorations",
+    "description": "Capturing the essence of city life through my lens",
+    "coverImage": "images/photos/album1/1.jpg",
+    "date": "2025-08-01",
+    "tags": [
+      "photography",
+      "urban",
+      "street",
+      "nefas"
+    ],
+    "photos": [
+      {
+        "id": "album1_1",
+        "title": "Urban Explorations #1",
+        "description": "Photo 1 from Urban Explorations",
+        "image": "images/photos/album1/1.jpg",
+        "thumbnail": "images/photos/album1/1.jpg"
+      },
+      {
+        "id": "album1_2",
+        "title": "Urban Explorations #2",
+        "description": "Photo 2 from Urban Explorations",
+        "image": "images/photos/album1/2.jpg",
+        "thumbnail": "images/photos/album1/2.jpg"
+      },
+      {
+        "id": "album1_3",
+        "title": "Urban Explorations #3",
+        "description": "Photo 3 from Urban Explorations",
+        "image": "images/photos/album1/3.jpg",
+        "thumbnail": "images/photos/album1/3.jpg"
+      }
+    ]
+  },
+  {
+    "type": "album",
+    "id": "album2",
+    "title": "Natural Moments",
+    "description": "Finding beauty in the organic world",
+    "coverImage": "images/photos/album2/1.jpg",
+    "date": "2025-07-28",
+    "tags": [
+      "photography",
+      "nature",
+      "landscape",
+      "nefas"
+    ],
+    "photos": [
+      {
+        "id": "album2_1",
+        "title": "Natural Moments #1",
+        "description": "Photo 1 from Natural Moments",
+        "image": "images/photos/album2/1.jpg",
+        "thumbnail": "images/photos/album2/1.jpg"
+      },
+      {
+        "id": "album2_2",
+        "title": "Natural Moments #2",
+        "description": "Photo 2 from Natural Moments",
+        "image": "images/photos/album2/2.jpg",
+        "thumbnail": "images/photos/album2/2.jpg"
+      }
+    ]
+  }
+]
