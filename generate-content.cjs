@@ -6,8 +6,8 @@ const path = require('path');
 // Configuration
 const PHOTO_DIR = path.join(__dirname, 'public/images/photos');
 const THREED_DIR = path.join(__dirname, 'public/images/3d');
-const PHOTO_JSON = path.join(__dirname, 'public/photos/photos.json');
-const THREED_JSON = path.join(__dirname, 'public/3d/3d.json');
+const PHOTO_JSON = path.join(__dirname, 'public/data/photos.json');
+const THREED_JSON = path.join(__dirname, 'public/data/3d.json');
 
 /**
  * Parse album info from text file

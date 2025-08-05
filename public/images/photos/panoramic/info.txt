@@ -1,0 +1,4 @@
+title: Panoramic
+description: shots that are wiiiide
+date: 2025-08-01
+tags: photography, urban, street

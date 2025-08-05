@@ -1,105 +1,203 @@
 [
   {
     "type": "album",
-    "id": "album3",
-    "title": "Upload Test",
-    "description": "qqqqqqqqqqqqq",
-    "coverImage": "images/photos/album3/1.jpg",
+    "id": "plants & macro",
+    "title": "Plants & Macro",
+    "description": "up close and personal",
+    "coverImage": "images/photos/plants & macro/1.jpg",
     "date": "2025-08-03",
     "tags": [
       "photography",
       "macro",
-      "makro",
-      "nefas"
+      "makro"
     ],
     "photos": [
       {
-        "id": "album3_1",
-        "title": "Upload Test #1",
-        "description": "Photo 1 from Upload Test",
-        "image": "images/photos/album3/1.jpg",
-        "thumbnail": "images/photos/album3/1.jpg"
+        "id": "plants & macro_1",
+        "title": "Plants & Macro #1",
+        "description": "Photo 1 from Plants & Macro",
+        "image": "images/photos/plants & macro/1.jpg",
+        "thumbnail": "images/photos/plants & macro/1.jpg"
       },
       {
-        "id": "album3_2",
-        "title": "Upload Test #2",
-        "description": "Photo 2 from Upload Test",
-        "image": "images/photos/album3/2.jpg",
-        "thumbnail": "images/photos/album3/2.jpg"
+        "id": "plants & macro_2",
+        "title": "Plants & Macro #2",
+        "description": "Photo 2 from Plants & Macro",
+        "image": "images/photos/plants & macro/2.jpg",
+        "thumbnail": "images/photos/plants & macro/2.jpg"
       },
       {
-        "id": "album3_3",
-        "title": "Upload Test #3",
-        "description": "Photo 3 from Upload Test",
-        "image": "images/photos/album3/3.jpg",
-        "thumbnail": "images/photos/album3/3.jpg"
+        "id": "plants & macro_3",
+        "title": "Plants & Macro #3",
+        "description": "Photo 3 from Plants & Macro",
+        "image": "images/photos/plants & macro/3.jpg",
+        "thumbnail": "images/photos/plants & macro/3.jpg"
       }
     ]
   },
   {
     "type": "album",
-    "id": "album1",
-    "title": "Urban Explorations",
-    "description": "Capturing the essence of city life through my lens",
-    "coverImage": "images/photos/album1/1.jpg",
+    "id": "animals",
+    "title": "Animals",
+    "description": "mostly cats",
+    "coverImage": "images/photos/animals/10x7,14cm (7).jpg",
     "date": "2025-08-01",
     "tags": [
       "photography",
       "urban",
-      "street",
-      "nefas"
+      "street"
     ],
     "photos": [
       {
-        "id": "album1_1",
-        "title": "Urban Explorations #1",
-        "description": "Photo 1 from Urban Explorations",
-        "image": "images/photos/album1/1.jpg",
-        "thumbnail": "images/photos/album1/1.jpg"
+        "id": "animals_1",
+        "title": "Animals #1",
+        "description": "Photo 1 from Animals",
+        "image": "images/photos/animals/10x7,14cm (7).jpg",
+        "thumbnail": "images/photos/animals/10x7,14cm (7).jpg"
       },
       {
-        "id": "album1_2",
-        "title": "Urban Explorations #2",
-        "description": "Photo 2 from Urban Explorations",
-        "image": "images/photos/album1/2.jpg",
-        "thumbnail": "images/photos/album1/2.jpg"
-      },
-      {
-        "id": "album1_3",
-        "title": "Urban Explorations #3",
-        "description": "Photo 3 from Urban Explorations",
-        "image": "images/photos/album1/3.jpg",
-        "thumbnail": "images/photos/album1/3.jpg"
+        "id": "animals_2",
+        "title": "Animals #2",
+        "description": "Photo 2 from Animals",
+        "image": "images/photos/animals/asdqwewqe.jpg",
+        "thumbnail": "images/photos/animals/asdqwewqe.jpg"
       }
     ]
   },
   {
     "type": "album",
-    "id": "album2",
-    "title": "Natural Moments",
-    "description": "Finding beauty in the organic world",
-    "coverImage": "images/photos/album2/1.jpg",
+    "id": "events",
+    "title": "Events",
+    "description": "Capturing local gigs",
+    "coverImage": "images/photos/events/1.jpg",
+    "date": "2025-08-01",
+    "tags": [
+      "photography",
+      "urban",
+      "street"
+    ],
+    "photos": [
+      {
+        "id": "events_1",
+        "title": "Events #1",
+        "description": "Photo 1 from Events",
+        "image": "images/photos/events/1.jpg",
+        "thumbnail": "images/photos/events/1.jpg"
+      },
+      {
+        "id": "events_2",
+        "title": "Events #2",
+        "description": "Photo 2 from Events",
+        "image": "images/photos/events/2.jpg",
+        "thumbnail": "images/photos/events/2.jpg"
+      },
+      {
+        "id": "events_3",
+        "title": "Events #3",
+        "description": "Photo 3 from Events",
+        "image": "images/photos/events/3.jpg",
+        "thumbnail": "images/photos/events/3.jpg"
+      }
+    ]
+  },
+  {
+    "type": "album",
+    "id": "panoramic",
+    "title": "Panoramic",
+    "description": "shots that are wiiiide",
+    "coverImage": "images/photos/panoramic/1.jpg",
+    "date": "2025-08-01",
+    "tags": [
+      "photography",
+      "urban",
+      "street"
+    ],
+    "photos": [
+      {
+        "id": "panoramic_1",
+        "title": "Panoramic #1",
+        "description": "Photo 1 from Panoramic",
+        "image": "images/photos/panoramic/1.jpg",
+        "thumbnail": "images/photos/panoramic/1.jpg"
+      },
+      {
+        "id": "panoramic_2",
+        "title": "Panoramic #2",
+        "description": "Photo 2 from Panoramic",
+        "image": "images/photos/panoramic/2.jpg",
+        "thumbnail": "images/photos/panoramic/2.jpg"
+      },
+      {
+        "id": "panoramic_3",
+        "title": "Panoramic #3",
+        "description": "Photo 3 from Panoramic",
+        "image": "images/photos/panoramic/3.jpg",
+        "thumbnail": "images/photos/panoramic/3.jpg"
+      }
+    ]
+  },
+  {
+    "type": "album",
+    "id": "portraits",
+    "title": "Portraits",
+    "description": "people around me",
+    "coverImage": "images/photos/portraits/1.jpg",
+    "date": "2025-08-01",
+    "tags": [
+      "photography",
+      "urban",
+      "street"
+    ],
+    "photos": [
+      {
+        "id": "portraits_1",
+        "title": "Portraits #1",
+        "description": "Photo 1 from Portraits",
+        "image": "images/photos/portraits/1.jpg",
+        "thumbnail": "images/photos/portraits/1.jpg"
+      },
+      {
+        "id": "portraits_2",
+        "title": "Portraits #2",
+        "description": "Photo 2 from Portraits",
+        "image": "images/photos/portraits/2.jpg",
+        "thumbnail": "images/photos/portraits/2.jpg"
+      },
+      {
+        "id": "portraits_3",
+        "title": "Portraits #3",
+        "description": "Photo 3 from Portraits",
+        "image": "images/photos/portraits/3.jpg",
+        "thumbnail": "images/photos/portraits/3.jpg"
+      }
+    ]
+  },
+  {
+    "type": "album",
+    "id": "street photography",
+    "title": "Street Photography",
+    "description": "out to get that deceisive moment",
+    "coverImage": "images/photos/street photography/1.jpg",
     "date": "2025-07-28",
     "tags": [
       "photography",
       "nature",
-      "landscape",
-      "nefas"
+      "landscape"
     ],
     "photos": [
       {
-        "id": "album2_1",
-        "title": "Natural Moments #1",
-        "description": "Photo 1 from Natural Moments",
-        "image": "images/photos/album2/1.jpg",
-        "thumbnail": "images/photos/album2/1.jpg"
+        "id": "street photography_1",
+        "title": "Street Photography #1",
+        "description": "Photo 1 from Street Photography",
+        "image": "images/photos/street photography/1.jpg",
+        "thumbnail": "images/photos/street photography/1.jpg"
       },
       {
-        "id": "album2_2",
-        "title": "Natural Moments #2",
-        "description": "Photo 2 from Natural Moments",
-        "image": "images/photos/album2/2.jpg",
-        "thumbnail": "images/photos/album2/2.jpg"
+        "id": "street photography_2",
+        "title": "Street Photography #2",
+        "description": "Photo 2 from Street Photography",
+        "image": "images/photos/street photography/2.jpg",
+        "thumbnail": "images/photos/street photography/2.jpg"
       }
     ]
   }
