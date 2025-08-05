@@ -1,6 +1,6 @@
 // Allow opening an album by title from other modules (e.g., home.js)
 window.showAlbumByTitle = function(title) {
-    fetch('/photos/photos.json')
+    fetch('/data/photos.json')
         .then(res => res.json())
         .then(items => {
             const album = items.find(item => item.type === 'album' && item.title === title);
@@ -16,7 +16,7 @@ export function initPhotos() {
     if (!photoGallery) return;
 
     // Load photos from JSON
-    fetch('/photos/photos.json')
+    fetch('/data/photos.json')
         .then(response => response.json())
         .then(items => {
             if (items && items.length > 0) {

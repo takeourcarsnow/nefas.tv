@@ -40,7 +40,7 @@ function loadLatestBlogs() {
     const grid = document.getElementById('home-blogs-grid');
     if (!grid || grid.children.length > 0) return;
     
-    fetch('/blog/posts.json')
+    fetch('/data/posts.json')
         .then(res => res.json())
         .then(posts => {
             posts.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -63,7 +63,7 @@ function loadLatestVideos() {
     const grid = document.getElementById('home-videos-grid');
     if (!grid || grid.children.length > 0) return;
     
-    fetch('/videos/videos.json')
+    fetch('/data/videos.json')
         .then(res => res.json())
         .then(videos => {
             videos.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -87,7 +87,7 @@ function loadLatestPhotos() {
     const grid = document.getElementById('home-photos-grid');
     if (!grid || grid.children.length > 0) return;
     
-    fetch('/photos/photos.json')
+    fetch('/data/photos.json')
         .then(res => res.json())
         .then(items => {
             // Sort by date descending
@@ -139,7 +139,7 @@ function loadLatest3D() {
     const grid = document.getElementById('home-3d-grid');
     if (!grid || grid.children.length > 0) return;
     
-    fetch('/3d/3d.json')
+    fetch('/data/3d.json')
         .then(res => res.json())
         .then(renders => {
             renders.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -163,7 +163,7 @@ function loadLatestWebdev() {
     const grid = document.getElementById('home-webdev-grid');
     if (!grid || grid.children.length > 0) return;
     
-    fetch('/webdev/webdev.json')
+    fetch('/data/webdev.json')
         .then(res => res.json())
         .then(projects => {
             projects.sort((a, b) => new Date(b.date) - new Date(a.date));

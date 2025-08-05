@@ -5,7 +5,7 @@ export function init3D() {
     if (!renderGallery) return;
 
     // Load 3D renders from JSON
-    fetch('/3d/3d.json')
+    fetch('/data/3d.json')
         .then(response => response.json())
         .then(renders => {
             if (renders && renders.length > 0) {

@@ -45,7 +45,7 @@ export const initWinampPlayer = async () => {
     // Load playlist from JSON file
     const loadPlaylist = async () => {
         try {
-            const response = await fetch('audio/playlist.json');
+            const response = await fetch('data/playlist.json');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }

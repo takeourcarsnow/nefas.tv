@@ -34,7 +34,7 @@ export const initBlogToggles = (callback = null, targetContainer = null) => {
     // Get the stored expanded states
     const expandedPosts = new Set(JSON.parse(sessionStorage.getItem('expandedPosts') || '[]'));
 
-    fetch('/blog/posts.json')
+    fetch('/data/posts.json')
         .then(res => {
             if (!res.ok) {
                 throw new Error(`HTTP error! status: ${res.status}`);
