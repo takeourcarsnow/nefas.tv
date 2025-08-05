@@ -1,4 +1,4 @@
 title: Events
-description: Capturing local gigs
+description: local shows & local vibes
 date: 2025-08-01
 tags: photography, urban, street
