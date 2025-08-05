@@ -391,6 +391,22 @@ export function showViewerModal(item, itemsArr = null, startIndex = null) {
             }
             swipeX = swipeY = null;
         });
+
+        // Tap left/right side of image to go prev/next (mobile, zoomed out)
+        img.addEventListener('touchend', (e) => {
+            if (!isMobile || zoom !== 1 || swipeMoved) return;
+            if (e.changedTouches && e.changedTouches.length === 1) {
+                const touch = e.changedTouches[0];
+                const rect = img.getBoundingClientRect();
+                const x = touch.clientX - rect.left;
+                // 0.35 left, 0.65 right, middle does nothing
+                if (x < rect.width * 0.35) {
+                    showAt(currentIndex - 1);
+                } else if (x > rect.width * 0.65) {
+                    showAt(currentIndex + 1);
+                }
+            }
+        });
     } else {
         // Escape key for single item
         const handleEscape = (e) => {
