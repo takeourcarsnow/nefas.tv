@@ -113,16 +113,18 @@ export function showViewerModal(item, itemsArr = null, startIndex = null) {
         // Get the actual displayed size of the image (after CSS and zoom)
         const imgRect = img.getBoundingClientRect();
         // Add a margin so the image never reaches the exact edge
-        const margin = 64; // px
-        const offsetX = Math.max(0, (imgRect.width - containerRect.width) / 2 - margin);
-        const offsetY = Math.max(0, (imgRect.height - containerRect.height) / 2 - margin);
+        // User wants much earlier clamping on left/right, so increase margin
+        const marginX = Math.max(0.32 * containerRect.width, 180); // clamp even earlier (32% of container or at least 180px)
+        const marginY = 64; // keep top/bottom as before
+        const offsetX = Math.max(0, (imgRect.width - containerRect.width) / 2 - marginX);
+        const offsetY = Math.max(0, (imgRect.height - containerRect.height) / 2 - marginY);
         // Only allow panning if the image is larger than the container in that axis
-        if (imgRect.width > containerRect.width + margin * 2) {
+        if (imgRect.width > containerRect.width + marginX * 2) {
             panX = Math.min(offsetX, Math.max(panX, -offsetX));
         } else {
             panX = 0;
         }
-        if (imgRect.height > containerRect.height + margin * 2) {
+        if (imgRect.height > containerRect.height + marginY * 2) {
             panY = Math.min(offsetY, Math.max(panY, -offsetY));
         } else {
             panY = 0;
