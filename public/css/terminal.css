@@ -56,14 +56,18 @@
     background: transparent;
     padding: 1.5rem;
     border: none;
-    line-height: 1.25;
+    line-height: 2.6; /* Even more gap */
 }
 
 /* Reset spacing for blog terminal content */
 #blog-terminal-output pre, 
 #blog-terminal-output div, 
-#blog-terminal-output span { 
-    margin: 0; 
-    padding: 0; 
-    line-height: 1.1; 
+#blog-terminal-output span {
+    margin: 0;
+    padding: 0;
+    line-height: inherit;
+}
+#blog-terminal-output .terminal-line {
+    margin-bottom: 0.3em !important; /* Small gap */
+    line-height: 1.3 !important;
 }
