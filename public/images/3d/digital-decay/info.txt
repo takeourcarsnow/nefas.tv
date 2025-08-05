@@ -1,4 +1,4 @@
-title: Digital Decay Chamber
-description: Architecture in the process of digital decomposition
+title: wired
+description: some houdini experiments
 date: 2025-07-27
-tags: 3d, decay, architecture, glitch
+tags: 3d, houdini, abstract, glitch
