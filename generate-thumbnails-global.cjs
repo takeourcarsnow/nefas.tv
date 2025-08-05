@@ -1,0 +1,61 @@
+// generate-thumbnails-global.cjs
+// Usage: node generate-thumbnails-global.cjs
+// Requires: npm install sharp
+
+const fs = require('fs');
+const path = require('path');
+const sharp = require('sharp');
+
+const CONFIGS = [
+  {
+    name: 'photos',
+    source: path.join(__dirname, 'public', 'images', 'photos'),
+    thumb: path.join(__dirname, 'public', 'images', 'photos', 'thumbnails'),
+  },
+  {
+    name: '3d',
+    source: path.join(__dirname, 'public', 'images', '3d'),
+    thumb: path.join(__dirname, 'public', 'images', '3d', 'thumbnails'),
+  },
+  // Webdev thumbnails are not generated anymore
+];
+
+const THUMB_SIZE = 200; // px
+
+function isImage(file) {
+  return /\.(jpe?g|png|webp)$/i.test(file);
+}
+
+function ensureDirSync(dir) {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+}
+
+function processDir(dir, thumbBase, rel = '') {
+  fs.readdirSync(dir, { withFileTypes: true }).forEach(entry => {
+    const fullPath = path.join(dir, entry.name);
+    const relPath = path.join(rel, entry.name);
+    if (entry.isDirectory()) {
+      if (entry.name !== 'thumbnails') {
+        processDir(fullPath, thumbBase, relPath);
+      }
+    } else if (isImage(entry.name)) {
+      const thumbOutDir = path.join(thumbBase, rel);
+      ensureDirSync(thumbOutDir);
+      const thumbOutPath = path.join(thumbOutDir, entry.name);
+      sharp(fullPath)
+        .resize(THUMB_SIZE, THUMB_SIZE, { fit: 'cover' })
+        .toFile(thumbOutPath)
+        .then(() => console.log('Created thumbnail:', thumbOutPath))
+        .catch(err => console.error('Error creating thumbnail for', fullPath, err));
+    }
+  });
+}
+
+CONFIGS.forEach(cfg => {
+  ensureDirSync(cfg.thumb);
+  processDir(cfg.source, cfg.thumb);
+});
+
+console.log('Global thumbnail generation started.');

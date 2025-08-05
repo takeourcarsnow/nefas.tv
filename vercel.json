@@ -1,4 +1,4 @@
 {
   "version": 2,
-  "buildCommand": "npm run playlist && npm run generate"
+  "buildCommand": "npm run thumbnails && npm run playlist && npm run generate"
 }

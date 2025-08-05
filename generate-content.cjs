@@ -65,46 +65,29 @@ function generatePhotoData() {
         
         items.forEach(item => {
             if (item.isDirectory()) {
-                const itemDir = path.join(PHOTO_DIR, item.name);
+                const albumDir = path.join(PHOTO_DIR, item.name);
+                const infoFile = path.join(albumDir, 'info.txt');
+                const images = getImageFiles(albumDir);
+                
+                if (images.length === 0) return;
                 
                 if (item.name === 'single') {
-                    // Handle single photos directory - look for subdirectories
-                    try {
-                        const singleItems = fs.readdirSync(itemDir, { withFileTypes: true });
-                        singleItems.forEach(singleItem => {
-                            if (singleItem.isDirectory()) {
-                                const singleDir = path.join(itemDir, singleItem.name);
-                                const infoFile = path.join(singleDir, 'info.txt');
-                                const images = getImageFiles(singleDir);
-                                
-                                if (images.length === 0) return;
-                                
-                                const info = parseAlbumInfo(infoFile);
-                                if (!info) return;
-                                
-                                const singlePhoto = {
-                                    type: 'single',
-                                    id: singleItem.name,
-                                    title: info.title || `Captured Moment`,
-                                    description: info.description || 'A glimpse through my lens',
-                                    image: `images/photos/single/${singleItem.name}/${images[0]}`,
-                                    thumbnail: `images/photos/single/${singleItem.name}/${images[0]}`,
-                                    date: info.date || new Date().toISOString().split('T')[0],
-                                    tags: info.tags || ['photography', 'original', 'nefas']
-                                };
-                                photoData.push(singlePhoto);
-                            }
-                        });
-                    } catch (error) {
-                        console.warn('Error processing single photos:', error.message);
-                    }
+                    // Handle single photos
+                    images.forEach((image, index) => {
+                        const photoData = {
+                            type: 'single',
+                            id: `single_${index + 1}`,
+                            title: `Captured Moment #${index + 1}`,
+                            description: 'A glimpse through my lens',
+                            image: `images/photos/single/${image}`,
+                            thumbnail: `images/photos/single/${image}`,
+                            date: new Date().toISOString().split('T')[0],
+                            tags: ['photography', 'original', 'nefas']
+                        };
+                        photoData.push(photoData);
+                    });
                 } else {
-                    // Handle regular album
-                    const infoFile = path.join(itemDir, 'info.txt');
-                    const images = getImageFiles(itemDir);
-                    
-                    if (images.length === 0) return;
-                    
+                    // Handle album
                     const info = parseAlbumInfo(infoFile);
                     if (!info) return;
                     

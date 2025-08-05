@@ -12,7 +12,8 @@
     "lint:fix": "npx eslint public/js/**/*.js --fix",
     "validate": "npx html-validate public/index.html",
     "generate": "node generate-content.cjs",
-    "playlist": "node generate-playlist.cjs"
+    "playlist": "node generate-playlist.cjs",
+    "thumbnails": "node generate-thumbnails-global.cjs"
   },
   "keywords": [
     "vaporwave",
@@ -39,6 +40,7 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.53.0"
+    "@supabase/supabase-js": "^2.53.0",
+    "sharp": "^0.34.3"
   }
 }
