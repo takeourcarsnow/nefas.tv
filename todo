@@ -2,6 +2,8 @@ add about me section
 
 fix terminal windows margins (theres like an invisible extra line after last one on screen in terminal write on text)
 
+add content management dashboard that could upload straight to github
+
 DONE improve writing in terminals
 
 add more content and proper captions to 3d section
@@ -10,7 +12,7 @@ few more blog entries
 
 finish integrating shoutbox
 
-make logo and add it to favico
+DONE make logo and add it to favico
 
 DONE learn to use source control
 
