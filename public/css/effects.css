@@ -1,3 +1,7 @@
+.artifact-violet {
+    color: #ff00ff;
+    text-shadow: 0 0 2px var(--violet-color), 0 0 6px var(--violet-glow);
+}
 /* Consistent spacing for misc categories */
 .misc-thoughts p {
     margin: 10px 0;

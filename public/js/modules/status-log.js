@@ -9,7 +9,7 @@ export function initStatusLog() {
             statuses.forEach(status => {
                 const item = document.createElement('div');
                 item.className = 'status-item';
-                item.innerHTML = `<span class="status-time">[${status.date}]</span> <span class="status-msg">${status.msg}</span>`;
+                item.innerHTML = `<span class="status-time artifact-violet">[${status.date}]</span> <span class="status-msg">${status.msg}</span>`;
                 statusLog.appendChild(item);
             });
         })

@@ -32,8 +32,8 @@ export function initMiscDynamic() {
                 linksContainer.innerHTML = '';
                 links.forEach(link => {
                     const div = document.createElement('div');
-                    div.className = 'link-item';
-                    div.innerHTML = `<a href="${link.url}" target="_blank" rel="noopener noreferrer"><span class="link-title">${link.title}</span> <span class="link-description">${link.desc}</span></a>`;
+                    div.className = 'artifact-item';
+                    div.innerHTML = `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="artifact-link"><span class="artifact-name">${link.title}</span></a> <span class="artifact-desc">${link.desc}</span>`;
                     linksContainer.appendChild(div);
                 });
             })
