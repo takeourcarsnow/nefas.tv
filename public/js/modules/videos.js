@@ -28,9 +28,9 @@ function displayVideoItems(videos, container) {
         videoItem.className = 'grid-item video-item';
         videoItem.innerHTML = `
             <div class="video-meta">
-                <h3 style="margin:0 0 6px 0;">${video.title}</h3>
-                <p style="margin:0 0 6px 0;color:#aaa;">${video.description || ''}</p>
                 <iframe width="100%" height="220" src="https://www.youtube.com/embed/${video.embedId}" title="${video.title}" frameborder="0" allowfullscreen style="border-radius:6px;"></iframe>
+                <h3 style="margin:12px 0 6px 0;">${video.title}</h3>
+                <p style="margin:0 0 6px 0;color:#aaa;">${video.description || ''}</p>
                 <p style="margin:6px 0 0 0;font-size:0.9em;color:#00ff9d;">${new Date(video.date).toLocaleDateString()}</p>
             </div>
         `;
