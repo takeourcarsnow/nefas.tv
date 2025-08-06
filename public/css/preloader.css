@@ -42,23 +42,36 @@
     justify-content: flex-start;
 }
 
-.preloader-logo {
-    position: static;
-    margin-bottom: 1.5em;
+
+/* New wrapper for high-quality scaling animation */
+.preloader-logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     max-width: 120px;
     max-height: 120px;
     width: 100%;
-    height: auto;
+    height: 100%;
     transform: scale(0.7);
-    animation: logo-linear-grow 5.0s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation: logo-linear-grow 4.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     will-change: transform;
     z-index: 2;
+}
+
+.preloader-logo {
+    position: static;
+    margin-bottom: 1.5em;
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: auto;
     pointer-events: none;
+    /* Remove transform/animation from the image itself */
 }
 
 @keyframes logo-linear-grow {
-    0% { transform: scale(0.3); opacity: 0; }
-    100% { transform: scale(1.4); opacity: 1; }
+    0% { transform: scale(0.3); opacity: 1; }
+    100% { transform: scale(2.0); opacity: 1; }
 }
 
 
