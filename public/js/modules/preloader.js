@@ -48,6 +48,9 @@ export const initPreloader = (preloader, siteContainer, onComplete) => {
         return t * (2 - t);
     }
 
+    function triggerLogoAnimation() {
+    }
+
     // Failsafe: force preloader to complete after 10 seconds
     const failsafeTimeout = setTimeout(() => {
         if (!completed) {
@@ -115,6 +118,7 @@ export const initPreloader = (preloader, siteContainer, onComplete) => {
         if (preloaderText) {
             preloaderText.textContent = preloaderFrames[frameIndex];
         }
+        // ...existing code...
 
         if (frameIndex >= preloaderFrameCount - 1) {
             if (!completed) {
