@@ -36,9 +36,8 @@ export const initPreloader = (preloader, siteContainer, onComplete) => {
     let frameIndex = 0;
     const preloaderFrameCount = preloaderFrames.length;
     document.body.style.overflow = 'hidden';
-    preloader.style.fontFamily = 'monospace';
-    preloader.style.whiteSpace = 'pre';
     preloader.style.willChange = 'opacity, transform';
+    const preloaderText = preloader.querySelector('#preloader-text');
 
     // Organic progress variables
     let progress = 0;
@@ -53,7 +52,9 @@ export const initPreloader = (preloader, siteContainer, onComplete) => {
     const failsafeTimeout = setTimeout(() => {
         if (!completed) {
             completed = true;
-            preloader.textContent = preloaderFrames[preloaderFrameCount - 1];
+            if (preloaderText) {
+                preloaderText.textContent = preloaderFrames[preloaderFrameCount - 1];
+            }
             if (onComplete) {
                 onComplete();
             }
@@ -111,13 +112,17 @@ export const initPreloader = (preloader, siteContainer, onComplete) => {
             frameIndex = lastFrameIndex;
         }
         lastFrameIndex = frameIndex;
-        preloader.textContent = preloaderFrames[frameIndex];
+        if (preloaderText) {
+            preloaderText.textContent = preloaderFrames[frameIndex];
+        }
 
         if (frameIndex >= preloaderFrameCount - 1) {
             if (!completed) {
                 completed = true;
                 clearTimeout(failsafeTimeout);
-                preloader.textContent = preloaderFrames[preloaderFrameCount - 1];
+                if (preloaderText) {
+                    preloaderText.textContent = preloaderFrames[preloaderFrameCount - 1];
+                }
                 if (onComplete) {
                     onComplete();
                 }

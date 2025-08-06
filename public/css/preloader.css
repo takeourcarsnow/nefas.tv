@@ -11,10 +11,33 @@
     align-items: center;
     z-index: 9999;
     white-space: pre;
-    font-size: 1.2em;
+    font-size: 0.85em;
     text-align: center;
     line-height: 1.4;
     /* Prevent layout shifts */
     min-height: 100vh;
     overflow: hidden;
 }
+
+/* Animate the logo in the preloader with a pulse effect */
+
+
+
+
+
+
+.preloader-logo {
+    animation: logo-linear-grow 3.5s ease-in-out forwards;
+    will-change: transform;
+}
+
+@keyframes logo-linear-grow {
+    0% { transform: scale(0.25); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+
+
+
+
+
