@@ -1,4 +1,4 @@
-title: tasty splines
+title: Tasty Splines
 description: soft body + splines = fun
 date: 2025-07-30
 tags: 3d, c4d, render, abstract
