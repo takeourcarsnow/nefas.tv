@@ -11,7 +11,9 @@ import { initFooter } from './modules/footer.js';
 import { initPhotos } from './modules/photos.js';
 import { init3D } from './modules/3d.js';
 import { initMiscAccordion } from './modules/misc-accordion.js';
+import { initStatusLog } from './modules/status-log.js';
 import BackgroundEffects from './modules/background-effects.js';
+import { initMiscDynamic, initFooterTimestamp } from './modules/misc-dynamic.js';
 
 // Cache DOM elements for better performance
 const domCache = {};
@@ -184,6 +186,15 @@ document.addEventListener('DOMContentLoaded', () => {
         initWinampPlayer();
         initFooter();
         initMiscAccordion();
+
+        // Initialize dynamic status log
+        initStatusLog();
+
+        // Initialize dynamic artifacts and links in misc section
+        initMiscDynamic();
+
+        // Initialize live footer timestamp
+        initFooterTimestamp();
 
         // Handle window resize for background effects
         window.addEventListener('resize', () => {
