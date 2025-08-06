@@ -53,7 +53,7 @@ function displayAlbum(album, container) {
             <img src="${album.coverImage}" 
                  alt="${album.title}" 
                  decoding="async" 
-                 style="width:100%;height:200px;object-fit:cover;border-radius:6px;opacity:1;display:block;">
+                 style="width:100%;height:200px;object-fit:cover;border-radius:6px;display:block;">
             <div class="album-overlay" style="position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.7); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">
                 📁 ${album.photos.length} photos
             </div>
@@ -72,12 +72,7 @@ function displayAlbum(album, container) {
         showAlbumModal(album);
     });
     
-    // Ensure image is visible when loaded
-    const img = albumItem.querySelector('img');
-    img.addEventListener('load', () => {
-        img.style.opacity = '1';
-        img.style.visibility = 'visible';
-    });
+    // ...existing code...
     
     // Fallback to ensure visibility even if load event doesn't fire
     setTimeout(() => {
