@@ -18,6 +18,7 @@ export function initMiscDynamic() {
                 artifactsList.innerHTML = '<div class="artifact-item">Failed to load artifacts.</div>';
             });
     }
+
     // Links
     const linksContainer = document.querySelector('.links-container');
     if (linksContainer) {
@@ -34,6 +35,24 @@ export function initMiscDynamic() {
             })
             .catch(() => {
                 linksContainer.innerHTML = '<div class="link-item">Failed to load links.</div>';
+            });
+    }
+
+    // Misc Thoughts
+    const thoughtsContainer = document.querySelector('.misc-thoughts');
+    if (thoughtsContainer) {
+        fetch('data/thoughts.json')
+            .then(res => res.json())
+            .then(thoughts => {
+                thoughtsContainer.innerHTML = '';
+                thoughts.forEach(thought => {
+                    const p = document.createElement('p');
+                    p.textContent = thought;
+                    thoughtsContainer.appendChild(p);
+                });
+            })
+            .catch(() => {
+                thoughtsContainer.innerHTML = '<p>Failed to load thoughts.</p>';
             });
     }
 }
