@@ -149,4 +149,12 @@
     text-shadow: none !important;
     background: var(--main-color) !important;
   }
+
+  /* Force dark animated background on all mobile devices */
+  body {
+    background: linear-gradient(135deg, var(--bg-color) 0%, #0a0a0f 25%, var(--bg-color) 50%, #0f0a0f 75%, var(--bg-color) 100%) !important;
+    background-size: 400% 400% !important;
+    animation: gradient-shift 20s ease infinite !important;
+    color: var(--main-color) !important;
+  }
 }
