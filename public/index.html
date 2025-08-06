@@ -46,6 +46,7 @@
     <!-- Module script with defer for better performance -->
     <script type="module" src="/js/main.js" defer></script>
     <script src="/js/modules/webdev-click.js" defer></script>
+    <script src="/js/modules/webdev.js" defer></script>
 </head>
 <body>
 
@@ -190,38 +191,7 @@
             <div id="webdev-content" class="content-section">
                 <h2>> webdev projects</h2>
                 <p>i occasionally write code that gets deployed to the internet. no startup grind, no VC buzzwords — just late-night commits and whatever felt fun to build.</p>
-                <div class="grid-container">
-                    <div class="grid-item webdev-item">
-                        <img src="images/webdev/pasakai.jpg" alt="Pasakai.lt website screenshot showing story interface" loading="lazy" decoding="async" style="width:100%;height:100px;object-fit:cover;margin-bottom:8px;border-radius:6px;">
-                        <a href="http://pasakai.lt" target="_blank" rel="noopener noreferrer"><h3>> pasakai.lt</h3></a>
-                        <p>some storybook site. probably for kids. i don't remember.</p>
-                    </div>
-                    <div class="grid-item webdev-item">
-                        <img src="images/webdev/inhaiku.jpg" alt="InHaiku.lt website screenshot showing haiku generator" loading="lazy" decoding="async" style="width:100%;height:100px;object-fit:cover;margin-bottom:8px;border-radius:6px;">
-                        <a href="http://inhaiku.lt" target="_blank" rel="noopener noreferrer"><h3>> inhaiku.lt</h3></a>
-                        <p>generates haikus. the pinnacle of artificial intelligence.</p>
-                    </div>
-                    <div class="grid-item webdev-item">
-                        <img src="images/webdev/particles.jpg" alt="Particles.lt website screenshot showing particle effects" loading="lazy" decoding="async" style="width:100%;height:100px;object-fit:cover;margin-bottom:8px;border-radius:6px;">
-                        <a href="http://particles.lt" target="_blank" rel="noopener noreferrer"><h3>> particles.lt</h3></a>
-                        <p>more particle nonsense, but this time in a browser. runs at 5fps.</p>
-                    </div>
-                    <div class="grid-item webdev-item">
-                        <img src="images/webdev/drummachine.jpg" alt="DrumMachine.art website screenshot showing drum interface" loading="lazy" decoding="async" style="width:100%;height:100px;object-fit:cover;margin-bottom:8px;border-radius:6px;">
-                        <a href="http://drummachine.art" target="_blank" rel="noopener noreferrer"><h3>> drummachine.art</h3></a>
-                        <p>make sick beats in your browser. or just annoying noises.</p>
-                    </div>
-                    <div class="grid-item webdev-item">
-                        <img src="images/webdev/greentext.jpg" alt="Greentext.fun website screenshot showing greentext interface" loading="lazy" decoding="async" style="width:100%;height:100px;object-fit:cover;margin-bottom:8px;border-radius:6px;">
-                        <a href="http://greentext.fun" target="_blank" rel="noopener noreferrer"><h3>> greentext.fun</h3></a>
-                        <p>a shrine to the greatest literary format of our time.</p>
-                    </div>
-                    <div class="grid-item webdev-item">
-                        <img src="images/webdev/asciid.jpg" alt="AsciiD.art website screenshot showing ASCII art converter" loading="lazy" decoding="async" style="width:100%;height:100px;object-fit:cover;margin-bottom:8px;border-radius:6px;">
-                        <a href="http://asciid.art" target="_blank" rel="noopener noreferrer"><h3>> asciid.art</h3></a>
-                        <p>turn images into ascii art. because of course.</p>
-                    </div>
-                </div>
+                <div id="webdev-projects-grid" class="grid-container"></div>
             </div>
 
             <!-- BLOG SECTION -->

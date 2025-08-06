@@ -1,7 +1,7 @@
 [
   {
-    "id": "pasakai",
-    "title": "Pasakai.lt",
+    "id": "PasakAI",
+    "title": "PasakAI.lt",
     "description": "Interactive storytelling platform for Lithuanian folk tales",
     "image": "images/webdev/pasakai.jpg",
     "thumbnail": "images/webdev/thumbnails/pasakai.jpg",
@@ -10,7 +10,7 @@
     "tags": ["webdev", "storytelling", "interactive", "lithuanian"]
   },
   {
-    "id": "inhaiku",
+    "id": "InHaiku",
     "title": "InHaiku.lt", 
     "description": "AI-powered haiku generator with minimalist aesthetics",
     "image": "images/webdev/inhaiku.jpg",
