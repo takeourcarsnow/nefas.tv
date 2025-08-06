@@ -10,7 +10,11 @@ export function initMiscDynamic() {
                 artifacts.forEach(a => {
                     const div = document.createElement('div');
                     div.className = 'artifact-item';
-                    div.innerHTML = `<span class="artifact-name">${a.name}</span> <span class="artifact-desc">${a.desc}</span>`;
+                    if (a.path) {
+                        div.innerHTML = `<a href="/${a.path}" target="_blank" class="artifact-link"><span class="artifact-name">${a.name}</span></a> <span class="artifact-desc">${a.desc}</span>`;
+                    } else {
+                        div.innerHTML = `<span class="artifact-name">${a.name}</span> <span class="artifact-desc">${a.desc}</span>`;
+                    }
                     artifactsList.appendChild(div);
                 });
             })
