@@ -10,6 +10,7 @@ import { initHomePosts } from './modules/home.js';
 import { initFooter } from './modules/footer.js';
 import { initPhotos } from './modules/photos.js';
 import { init3D } from './modules/3d.js';
+import { initVideos } from './modules/videos.js';
 import { initMiscAccordion } from './modules/misc-accordion.js';
 import { initStatusLog } from './modules/status-log.js';
 import BackgroundEffects from './modules/background-effects.js';
@@ -159,6 +160,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         initPhotos();
                     } else if (sectionId === '3d-content') {
                         init3D();
+                    } else if (sectionId === 'video-content') {
+                        initVideos();
                     }
                 }
             };
